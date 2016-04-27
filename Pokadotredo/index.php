@@ -9,10 +9,34 @@
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 
+    <!--Slider-->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script src="js/responsiveSlides.js"></script>
+
 </head>
+
 <body>
+
     <div class="container">
         <?php $current=0; include "components/banner_and_nav.php"; ?>
+
+        <!-- SECTION END -->
+         <div class="row">
+            <div class="col-md-1 col-xs-1"></div>
+            <div class="col-md-10 col-xs-10 endSection final"></div>
+            <div class="col-md-1 col-xs-1"></div>
+        </div>
+        <!-- SECTION END -->
+
+
+        <!-- SLIDER ... credit: http://responsiveslides.com/ -->
+        <ul class="rslides">
+            <li><img src="images/slider1.jpg" alt="slider1"></li>
+            <li><img src="images/slider2.jpg" alt="slider2"></li>
+            <li><img src="images/slider3.jpg" alt="slider3"></li>
+            <li><img src="images/slider4.jpg" alt="slider4"></li>
+        </ul>
+        
 
         <!-- SECTION END -->
          <div class="row">
@@ -86,13 +110,13 @@
             <div class="col-md-3 col-sm-0"></div>
             <div class="col-md-3 col-sm-12">
                 <h2>Cathy</h2>
-                <img src="..." class="about_image" alt="Cathy">
+                <img src="images/Cathy.jpg" class="about_image" alt="Cathy">
                 <p class="about_image_description">Cathy is a lifelong art educator. Both in and out of the classroom, she has spent her adult life helping children and adults find paths for creative expression. Educated at Middlebury College and the Massachusetts College of Art, she brings her energy to the studio every day.
                 </p>
             </div>
             <div class="col-md-3 col-sm-12">
                 <h2>Leigh</h2>
-                <img src="..." class="about_image" alt="Leigh">
+                <img src="images/Leigh.jpg" class="about_image" alt="Leigh">
                 <p class="about_image_description">A graduate of the responsive teacher program at the University of Vermont, Leigh has spent many years preparing teaching environments and designing activities for fun, authentic, hands on learning with a focus on individualized instruction and positive interaction! Now she’s looking forward to bringing her creative energy to Pokadot mobile art studio and you!
                 </p>
             </div>
@@ -120,5 +144,14 @@
     </div>
 
     <?php include "components/globalscripts.php" ?>
+
+    <script>
+
+        $(function() {
+            $(".rslides").responsiveSlides();
+        });
+
+    </script>
+
 </body>
 </html>

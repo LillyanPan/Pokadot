@@ -19,6 +19,7 @@ li {
 	margin-top: 10px;
 }
 
+
 /* BANNER */
 
 #banner {
@@ -98,6 +99,8 @@ li {
 
 /* INDEX.HTML */
 
+
+
 .indexHeader {
 	font-size: 20pt !important;
 	font-family: "Quicksand" !important;
@@ -117,6 +120,18 @@ li {
 	margin-top: 30px;
 	margin-bottom: 30px;
 }
+
+.about_image {
+    margin-bottom: 20px;
+    width: 70%;
+    margin-left: 15%;
+}
+
+.about_image img {
+    margin-left: 25%;
+
+}
+
 
 .about_image_description {
 	font-size: 12pt;
@@ -297,3 +312,36 @@ img.picture-triple {
     z-index: 2;
 }
 
+/* SLIDER -- credit: http://responsiveslides.com/ */
+
+.rslides { 
+    position: relative;
+    list-style: none;
+    overflow: hidden;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+.rslides li {
+    -webkit-backface-visibility: hidden;
+    position: absolute;
+    display: none;
+    width: 100%;
+    left: 0;
+    top: 0;
+}
+
+.rslides li:first-child {
+    position: relative;
+    display: block;
+    float: left;
+}
+
+.rslides img {
+    display: block;
+    height: auto;
+    float: left;
+    width: 100%;
+    border: 0;
+}
