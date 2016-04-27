@@ -79,7 +79,7 @@ li {
     background-color: #FE642E;
     border-bottom: 1px solid #FE642E;
     padding: 10px;
-    z-index: 1;
+    z-index: 20;
     font-family: "Quicksand";
 }
 
