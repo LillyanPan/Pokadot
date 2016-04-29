@@ -172,6 +172,18 @@ label, input, textarea {
     font-family: sans-serif;
 }
 
+select {
+    display: block;
+    border: 1px solid #FE642E;
+    margin-top: 10px;
+    padding: 5px;
+    font-family: sans-serif;
+    outline: none;
+    -webkit-appearance: none;
+    -webkit-border-radius: 0px;
+    background-color: white;
+}
+
 label {
     display: inline;
     border: none;

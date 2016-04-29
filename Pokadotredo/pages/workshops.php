@@ -32,7 +32,7 @@
            <div class="col-md-6 col-sm-6">
                 <h1 class="indexHeader">Workshops and Classes</h1>
                 <ul>
-                   <li>Open studio time or structured classes</li>
+                    <li>Open studio time or structured classes</li>
                     <li>Range of art materials</li>
                     <li>Variety of utilitarian and decorative bisqueware</li>
                     <li>Colorful palette of glazes</li>
@@ -137,6 +137,15 @@
             <div class="col-md-1 col-xs-1"></div>
         </div>
         <!-- SECTION END -->
+
+        <div class="row">
+            <div class="col-md-3 col-sm-3"></div>
+            <div class="col-md-6 col-sm-6">
+                <h1 class="indexHeader">Sign Up For A Workshop!</h1>
+                <?php include "../components/sign_up_form.php" ?>
+            </div>
+            <div class="col-md-3 col-sm-3"></div>
+        </div>
 
         <div class="row">
             <div class="col-md-3 col-xs-3"></div>
