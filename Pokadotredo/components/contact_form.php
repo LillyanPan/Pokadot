@@ -42,20 +42,14 @@
         $_SERVER["REQUEST_METHOD"] = "GET";
     }
     else {
-        $values = $submitted ? $_POST : $initial_values;
-
-        $soft_text = array_fill_keys(array_keys($initial_values), " soft-text");
-        if ($submitted)
-            foreach ($soft_text as $field => $value)
-                if ($_POST[$field] != $initial_values[$field])
-                    $soft_text[$field] = "";
+        // $values = $submitted ? $_POST : $initial_values;
 
         echo '<form id="contact-form" class="form" method="post" action="../pages/contactus.php#contact-form">
                     <div class="soft-text">All fields required.</div>
-                    <input id="name" class="short-text' . $valid["name"] . $soft_text["name"] . '" type="text" name="name" title="' . $initial_values["name"] . '" value="' . $values["name"] . '">
-                    <input id="email" class="short-text' . $valid["email"] . $soft_text["email"] . '" type="text" name="email" title="' . $initial_values["email"] . '" value="' . $values["email"] . '">
-                    <input id="subject" class="wide-text' . $valid["subject"] . $soft_text["subject"] . '" type="text" name="subject" title="' . $initial_values["subject"] . '" value="' . $values["subject"] . '">
-                    <textarea id="msg" class="wide-text' . $valid["msg"] . $soft_text["msg"] . '" form="contact-form" name="msg" rows=8 title="' . $initial_values["msg"] . '">' . $values["msg"] . '</textarea>';
+                    <input id="name" class="soft-text short-text ' . $valid["name"] . '" type="text" required name="name" title="Please enter your name" placeholder="' . $initial_values["name"] . '">
+                    <input id="email" class="soft-text short-text ' . $valid["email"] . '" type="text" required name="email" title="Please enter your email" placeholder="' . $initial_values["email"] . '">
+                    <input id="subject" class="soft-text wide-text ' . $valid["subject"] . '" type="text" required name="subject" title="Please enter a subject for your message." placeholder="' . $initial_values["subject"] . '">
+                    <textarea id="msg" class="wide-text ' . $valid["msg"] . '" form="contact-form" required name="msg" rows=8 title="Please enter a body for your message." placeholder="' . $initial_values["msg"] . '"></textarea>';
 
         foreach ($initial_values as $field => $value) {
             echo "\n
