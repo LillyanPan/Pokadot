@@ -153,10 +153,14 @@ li {
 	text-align: center;
 }
 
-
 .soft-text {
     color: #444;
     font-style: italic;
+}
+
+.warning {
+    color: red;
+    font-weight: bold;
 }
 
 .block-quote {
