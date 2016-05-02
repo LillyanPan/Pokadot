@@ -1,4 +1,11 @@
 <?php
+    
+    /*
+    In this file, we will include form validation for the login form 
+    using regexes. We will also prevent code injection by stripping
+    HTML tags and elements. We will provide feedback to the users if
+    their entries include invalid inputs. 
+    */
 
     $warning = empty($_POST) ? "" : "Bad Login";
     echo "\n";

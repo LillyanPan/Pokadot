@@ -1,5 +1,12 @@
 <?php
 
+    /*
+    This file already has some form validation implemented. However, we 
+    want to improve the validation by preventing code injection by
+    stripping HTML tags and elements. We will use regexes and filter
+    input functions to implement further form validation. 
+    */
+
     $initial_values = array(
         "name" => "Name",
         "email" => "Email Address",
