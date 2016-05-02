@@ -357,3 +357,19 @@ img.picture-triple {
     width: 100%;
     border: 0;
 }
+
+/* GOOGLE CALENDAR */
+
+.google-calendar-container {
+    display: block;
+    text-align: center;
+}
+
+.google-calendar {
+    margin: 0 auto;
+}
+
+
+
+
+
