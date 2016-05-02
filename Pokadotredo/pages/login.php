@@ -1,4 +1,32 @@
-<?php session_start() ?>
+<?php session_start(); 
+
+    if (!empty($_POST) && isset($_POST['logout-submit'])) {
+        $_SESSION = array();
+        header("Refresh:0");
+        exit();
+    }
+    else if (!empty($_POST) && isset($_POST['login-submit'])) {
+        $username = filter_input(INPUT_POST, "username", FILTER_SANITIZE_EMAIL);
+        $password = filter_input(INPUT_POST, "password", FILTER_SANITIZE_EMAIL);
+        require_once "../config.php";
+        try {
+            $pdo = new PDO("mysql: host=".DB_HOST.";dbname=".DB_NAME, DB_USER, DB_PASSWORD);
+        }
+        catch (PDOException $e) {
+            echo $e->getMessage();
+        }
+        $stmt = $pdo->prepare("SELECT password_hash FROM users WHERE username=:username");
+        $stmt->bindParam(":username", $username);
+        $stmt->execute();
+        $row = $stmt->fetch();
+        if (!empty($row) && password_verify($password, $row["password_hash"])) {
+            $_SESSION['user'] = $username;
+            header("Location: ../index.php");
+            exit();
+        }
+    }
+
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -28,7 +56,6 @@
         <div class="row">
             <div class="col-md-3 col-sm-3"></div>
             <div class="col-md-6 col-sm-6">
-                <h1 class="indexHeader">Log In</h1>
                 <?php include "../components/login_form.php" ?>
             </div>
             <div class="col-md-3 col-sm-3"></div>
@@ -42,16 +69,7 @@
         </div>
         <!-- SECTION END -->
 
-        <div class="row">
-            <div class="col-md-3 col-xs-3"></div>
-             <div class="col-md-6 col-xs-6">
-                <div class="cod-md-12">
-                    <p class="footer">gopokadot@gmail.com</p>
-                </div> 
-             </div>
-            <div class="col-md-3 col-xs-3"></div>
-        </div>
-
+        <?php include "../components/footer.php" ?>
 
     </div><!-- container -->
 
