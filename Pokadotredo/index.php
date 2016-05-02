@@ -14,9 +14,15 @@
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
     <script src="js/responsiveSlides.js"></script>
 
+    <!-- Source: http://paperjs.org/tutorials/ ! -->
+    <script type="text/javascript" src="js/paper-full.min.js"></script>
+    <script type="text/paperscript" src="js/paperScript.js" canvas="canvas"></script>
+
 </head>
 
 <body>
+
+    <!-- <canvas id="canvas" resize></canvas>  COMMENT OUT JS FOR NOW -->
 
     <div class="container">
         <?php $current=0; include "components/banner_and_nav.php"; ?>
