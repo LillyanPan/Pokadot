@@ -1,6 +1,6 @@
 $(document).ready(function() {
 
-    $(".picture-triple-container").click(function() {
+    $(".studio-picture").click(function() {
         var img = $(this).children("img");
         $("#picture-popout-img").attr("src", img.attr("src").replace("_small", ""));
         $("#picture-popout-img").attr("alt", img.attr("alt"));

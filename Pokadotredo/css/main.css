@@ -153,10 +153,14 @@ li {
 	text-align: center;
 }
 
-
 .soft-text {
     color: #444;
     font-style: italic;
+}
+
+.warning {
+    color: red;
+    font-weight: bold;
 }
 
 .block-quote {
@@ -254,25 +258,30 @@ input[type="submit"]:hover {
 
 /* PICTURES */
 
-img.picture-triple {
+.studio-picture-container {
+    text-align: center;
+}
+.studio-picture {
+    display: inline-block;
+    width: 30%;
+    margin-right: 3%;
+    border-radius: 5px;
+    background-color: rgba(0, 0, 0, 0);
+}
+.studio-picture:last-child {
+    margin-right: 0;
+}
+.studio-picture:hover {
+    background-color: rgba(100, 100, 100, 0.5);
+    cursor: pointer;
+}
+img.studio-picture-img {
     display: block;
     width: 100%;
     border-radius: 5px;
     z-index: -1;
     position: relative;
 }
-.picture-triple-container {
-    display: inline-block;
-    width: 30%;
-    margin-right: 4%;
-    border-radius: 5px;
-    background-color: rgba(0, 0, 0, 0);
-}
-.picture-triple-container:hover {
-    background-color: rgba(100, 100, 100, 0.5);
-    cursor: pointer;
-}
-
 .rightmost {
     margin-right: 0;
     padding-right: 0;
