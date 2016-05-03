@@ -227,11 +227,12 @@ input[type="submit"] {
     margin-left: auto;
     margin-right: auto;
     border-radius: 10px;
-    background-color: #FE642E;
+    /*background-color: #FE642E;*/
+    background-color: white;
     border: 2px solid #FE642E;
 }
 input[type="submit"]:hover {
-    /*background-color: rgba(254, 100, 46, 0.4);*/
+    background-color: rgba(254, 100, 46, 0.4);
     border-color: #DC3E05;
     cursor: pointer;
 }
