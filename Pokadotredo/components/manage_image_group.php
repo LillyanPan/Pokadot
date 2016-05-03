@@ -14,6 +14,7 @@
     did in Project 3. 
 -->
 
+<!-- rough form for now, not very pretty yet on the site, but it gives the general idea -->
 <form class="add-image-form" method="POST" action="#" enctype="multipart/form-data" style="margin-bottom: 10px">
     Add an image to this group: <br>
     <input type="file" name="image_upload" id="image_upload" required title="Please select a file to upload" style="display:inline-block"><br>

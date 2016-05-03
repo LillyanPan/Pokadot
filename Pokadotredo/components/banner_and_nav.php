@@ -26,7 +26,7 @@ echo '<!-- banner -->
             </div>
             <a ' . $classes[2] . 'href="' . $path_to_root . 'pages/contactus.php">Contact Us</a>
             ' . (empty($_SESSION['user']) ? "" : 
-                    "<a href='$path_to_root/pages/login.php'>Logout</a>"
+                    "<a href='{$path_to_root}pages/login.php'>Logout</a>"
             ) . '
         </div><!-- navigation -->
 
