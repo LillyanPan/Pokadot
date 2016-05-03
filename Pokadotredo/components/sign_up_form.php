@@ -76,7 +76,7 @@
                     <input id="name" class="short-text' . $valid["name"] . $soft_text["name"] . '" type="text" name="name" placeholder="' . $initial_values["name"] . '" maxlength="100" required title="Please enter your name.">
                     <input id="email" class="short-text' . $valid["email"] . $soft_text["email"] . '" type="text" name="email" placeholder="' . $initial_values["email"] . '" required title="Please enter a email.">
                     <input id="phone" class="short-text' . $valid["phone"] . $soft_text["phone"] . '" type="tel" name="phone" placeholder="' . $initial_values["phone"] . '" title="Please enter a phone number.">
-                    <input id="date" class="short-text' . $valid["date"] . $soft_text["date"] . '" type="datetime-local" name="date" placeholder="' . $initial_values["date"] . '" required title="Please enter a date.">';
+                    <input id="date" class="short-text' . $valid["date"] . $soft_text["date"] . '" type="datetime-local" name="date" required title="Please enter a date.">';
                 echo '<select name="workshop-type" class="short-text' . $valid["workshop_type"] . $soft_text["workshop_type"] . '" required title="Please select a workshop!">
                         <option selected="selected" value>Workshop</option>';
 
@@ -87,9 +87,9 @@
                 echo  '</select>
                     <textarea id="comments" class="wide-text' . $valid["comments"] . $soft_text["comments"] . '" form="signup-form" name="comments" rows=8 placeholder="' . $initial_values["comments"] . '"></textarea>';
 
-        foreach ($initial_values as $field => $value) {
-            echo "\n<label for=\"$field\" class=\"no-show\">$value</label>";
-        }
+        // foreach ($initial_values as $field => $value) {
+        //     echo "\n<label for=\"$field\" class=\"no-show\">$value</label>";
+        // }
 
         echo    '<input id="add-mailing-list" name="add-mailing-list" type="checkbox">
                         <label for="add-mailing-list">Add me to the email list</label>
