@@ -6,23 +6,22 @@
         exit();
     }
     else if (!empty($_POST) && isset($_POST['login-submit'])) {
+        // use email filter because it has a stricter set of legal characters
         $username = filter_input(INPUT_POST, "username", FILTER_SANITIZE_EMAIL);
         $password = filter_input(INPUT_POST, "password", FILTER_SANITIZE_EMAIL);
-        require_once "../config.php";
-        try {
+        $valid = $username && $password && strlen($username) <= 20 && strlen($password) <= 20;
+        if ($valid) {
+            require_once "../config.php";
             $pdo = new PDO("mysql: host=".DB_HOST.";dbname=".DB_NAME, DB_USER, DB_PASSWORD);
-        }
-        catch (PDOException $e) {
-            echo $e->getMessage();
-        }
-        $stmt = $pdo->prepare("SELECT password_hash FROM users WHERE username=:username");
-        $stmt->bindParam(":username", $username);
-        $stmt->execute();
-        $row = $stmt->fetch();
-        if (!empty($row) && password_verify($password, $row["password_hash"])) {
-            $_SESSION['user'] = $username;
-            header("Location: ../index.php");
-            exit();
+            $stmt = $pdo->prepare("SELECT password_hash FROM users WHERE username=:username");
+            $stmt->bindParam(":username", $username);
+            $stmt->execute();
+            $row = $stmt->fetch();
+            if (!empty($row) && password_verify($password, $row["password_hash"])) {
+                $_SESSION['user'] = $username;
+                header("Location: ../index.php");
+                exit();
+            }
         }
     }
 
