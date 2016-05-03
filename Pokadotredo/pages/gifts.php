@@ -54,7 +54,8 @@
             <div class="col-md-8 col-sm-10">
                 <?php
                 $studio_pictures = array( "../images/gifts1_small.jpg",
-                                          "../images/gifts2_small.jpg");
+                                          "../images/gifts2_small.jpg",
+                                          "../images/gifts3_small.jpg");
                 include "../components/studiopictures.php";
                 ?>
             </div>
