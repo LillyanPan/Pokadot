@@ -22,9 +22,9 @@ echo '<!-- banner -->
                     <br>
                     <a href="' . $path_to_root . 'pages/gifts.php">Personalized Gifts</a>
                     <br>
-                    <a href="' . $path_to_root . 'pages/workshops.php">Workshops and Classes</a>
-                    <br>
                     <a href="' . $path_to_root . 'pages/pottery.php">Pottery Painting</a>
+                    <br>
+                    <a href="' . $path_to_root . 'pages/workshops.php">Workshops and Classes</a>
                 </div>
             </div>
             <a ' . $classes[3] . 'href="' . $path_to_root . 'pages/signup.php">Sign Up</a>
