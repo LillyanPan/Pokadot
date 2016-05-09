@@ -14,7 +14,7 @@
 <body>
     <div class="container">
 
-        <?php $current=1; include "../components/banner_and_nav.php"; ?>
+        <?php $current=2; include "../components/banner_and_nav.php"; ?>
 
         <?php include "../components/picture_popout.php" ?>
 
@@ -25,8 +25,6 @@
             <div class="col-md-1 col-xs-1"></div>
         </div>
         <!-- SECTION END -->
-
-        
 
         <div class="row">
            <div class="col-md-3 col-sm-3"></div>
@@ -44,28 +42,6 @@
         </div>
 
           <!-- SECTION END -->
-         <div class="row">
-            <div class="col-md-3 col-xs-3"></div>
-            <div class="col-md-6 col-xs-6 endSection"></div>
-            <div class="col-md-3 col-xs-3"></div>
-        </div>
-        <!-- SECTION END -->
-
-        <div class="row">
-            <div class="col-md-2 col-sm-1"></div>
-            <div class="col-md-8 col-sm-10">
-                <h1 class="indexHeader">Pottery Painting - all ages</h1>
-                <?php
-                $studio_pictures = array( "../images/pottery1_small.jpg",
-                                          "../images/pottery2_small.jpg",
-                                          "../images/pottery3_small.jpg");
-                include "../components/studiopictures.php";
-                ?>
-            </div>
-            <div class="col-md-2 col-sm-1"></div>
-        </div>
-
-        <!-- SECTION END -->
          <div class="row">
             <div class="col-md-3 col-xs-3"></div>
             <div class="col-md-6 col-xs-6 endSection"></div>

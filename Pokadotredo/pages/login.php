@@ -30,7 +30,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>Pok-A-Dot Contact Us</title>
+    <title>Pok-A-Dot Login</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     <script type="text/javascript" src="../js/picture_popout.js"></script>
     <link href='https://fonts.googleapis.com/css?family=Quicksand:400,700' rel='stylesheet' type='text/css'>
@@ -42,7 +42,7 @@
 <body>
     <div class="container">
 
-         <?php $current=3; include "../components/banner_and_nav.php"; ?>
+         <?php $current=5; include "../components/banner_and_nav.php"; ?>
 
           <!-- SECTION END -->
          <div class="row">

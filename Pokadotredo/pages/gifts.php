@@ -15,7 +15,7 @@
 
     <div class="container">
 
-        <?php $current=1; include "../components/banner_and_nav.php"; ?>
+        <?php $current=2; include "../components/banner_and_nav.php"; ?>
 
          <!-- SECTION END -->
          <div class="row">
