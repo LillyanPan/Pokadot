@@ -398,6 +398,30 @@ img.studio-picture-img {
     margin: 0 auto;
 }
 
+/* Workshop Sign Up Form */
+
+.signup-button {
+    display: block;
+    padding: 8px;
+    margin: auto;
+    margin-bottom: 20px;
+    width: 200px;
+    height: 40px;
+    text-decoration: none;
+    text-align: center;
+    border-radius: 10px;
+    background-color: white;
+    border: 2px solid #FE642E;
+    color: black;
+}
+
+.signup-button:hover {
+    background-color: rgba(254, 100, 46, 0.4);
+    border-color: #DC3E05;
+    text-decoration: none;
+    color: black;
+    cursor: pointer;
+}
 
 
 

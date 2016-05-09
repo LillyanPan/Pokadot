@@ -48,7 +48,6 @@
             <div class="col-md-1 col-xs-1"></div>
             <div class="col-md-10 col-xs-10">
                 <h1 class="indexHeader"> We are a mobile art and pottery studio</h1>
-
                 <p id = "homePageParagraph">We are passionate about bringing the invigorating power of art and creativity to people of all ages anywhere! We meet you where you are!</p>
             </div>
             <div class="col-md-1 col-xs-1"></div>
@@ -62,11 +61,11 @@
         </div>
         <!-- SECTION END -->
 
-
         <div class="row">
             <div class="col-md-3 col-xs-3"></div>
              <div class="col-md-6 col-xs-6">
                 <div class="cod-md-12">
+                    <a class="signup-button" href="pages/signup.php" class="button">Sign up for a workshop!</a>
                     <p class="footer">gopokadot@gmail.com</p>
                 </div> 
              </div>
