@@ -115,39 +115,6 @@
         </div>
         <!-- SECTION END -->
 
-        <!--
-        This is where we will include the workshop sign up calendar. We will need
-        to figure out a way to register which events the users click on and display
-        the Workshop Sign Up form when a workshop time/date is clicked. Currently,
-        we plan on integrating this using the Google Calendar API or a third-party
-        API depending on what each type of API offers. 
-        -->
-
-        <div class="row">
-            <div class="col-md-3 col-sm-3"></div>
-            <div class="col-md-6 col-sm-6">
-                <h1 class="indexHeader">Sign Up For a Workshop!</h1>
-                <?php include "../components/sign_up_form.php" ?>
-            </div>
-            <div class="col-md-3 col-sm-3"></div>
-        </div>
-
-        <div class="row">
-            <div class="col-md-3 col-sm-3"></div>
-            <div class="col-md-6 col-sm-6">
-                <?php include "../components/calendar.php" ?>
-            </div>
-            <div class="col-md-3 col-sm-3"></div>
-        </div>
-
-         <!-- SECTION END -->
-         <div class="row">
-            <div class="col-md-1 col-xs-1"></div>
-            <div class="col-md-10 col-xs-10 endSection final"></div>
-            <div class="col-md-1 col-xs-1"></div>
-        </div>
-        <!-- SECTION END -->
-
         <?php include "../components/footer.php" ?>
 
     </div><!-- container -->

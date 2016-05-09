@@ -24,6 +24,23 @@
         </div>
         <!-- SECTION END -->
 
+        <div class="row">
+            <div class="col-md-3 col-sm-3"></div>
+            <div class="col-md-6 col-sm-6">
+                <h1 class="indexHeader">Sign Up For a Workshop!</h1>
+                <?php include "../components/sign_up_form.php" ?>
+            </div>
+            <div class="col-md-3 col-sm-3"></div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-3 col-sm-3"></div>
+            <div class="col-md-6 col-sm-6">
+                <?php include "../components/calendar.php" ?>
+            </div>
+            <div class="col-md-3 col-sm-3"></div>
+        </div>
+
         <!-- SECTION END -->
          <div class="row">
             <div class="col-md-1 col-xs-1"></div>
