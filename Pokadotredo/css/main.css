@@ -1,3 +1,5 @@
+/*  GLOBAL  */
+
 h1, h2 {
 	text-align: center;
 	font-family: "Quicksand" !important;
@@ -12,7 +14,6 @@ ul {
 	list-style-type: circle;
 	text-align: left;
 	font-size: 12pt;
-
 }
 
 li {
@@ -25,7 +26,7 @@ iframe {
     border: 0;
 }
 
-/* BANNER */
+/*  BANNER  */
 
 #banner {
     background-color: #FFF;
@@ -39,7 +40,7 @@ iframe {
     margin: 0 auto;
 }
 
-/* NAVIGATION */
+/*  NAVIGATION  */
 
 .menubar {
     display: block;
@@ -49,7 +50,6 @@ iframe {
     font-size: 20px;
     text-align: center;
     font-family: "Quicksand", Verdana, sans-serif;
-   
 }
 
 .menubar a {
@@ -60,6 +60,7 @@ iframe {
     text-decoration: none;
     text-transform: uppercase;
 }
+
 .menubar a.selected {
 	text-decoration: none;
     border-bottom: 1px solid #FE642E;
@@ -68,7 +69,6 @@ iframe {
 .menubar a:hover {
     color: #FE642E;
     text-decoration: none;
-
 }
 
 #whatwedo {
@@ -102,12 +102,11 @@ iframe {
     text-decoration: underline;
 }
 
-/* INDEX.HTML */
+/*  INDEX.HTML  */
 
 #homePageParagraph {
     text-align: center;
 }
-
 
 .indexHeader {
 	font-size: 20pt !important;
@@ -139,9 +138,7 @@ iframe {
 
 .about_image img {
     margin-left: 25%;
-
 }
-
 
 .about_image_description {
 	font-size: 12pt;
@@ -157,7 +154,7 @@ iframe {
 	font-size: 12pt;
 }
 
-/* FORM */
+/*  FORM  */
 
 .center {
 	text-align: center;
@@ -186,6 +183,10 @@ label, input, textarea {
     font-family: sans-serif;
 }
 
+textarea {
+    resize: vertical;
+}
+
 select {
     display: block;
     border: 1px solid #FE642E;
@@ -211,11 +212,6 @@ input[type="checkbox"] {
     display: inline;
 }
 
-input[type="text"]:focus, textarea:focus {
-    /*border: none;*/
-    /*border: 2px solid #FE642E;*/
-}
-
 input[type="text"].short-text, textarea.short-text {
     max-width: 250px;
     width: 100%;
@@ -236,18 +232,66 @@ input[type="submit"] {
     width: 100%;
     margin-left: auto;
     margin-right: auto;
-    border-radius: 10px;
-    /*background-color: #FE642E;*/
+    border-radius: 7px;
     background-color: white;
     border: 2px solid #FE642E;
 }
+
 input[type="submit"]:hover {
     background-color: rgba(254, 100, 46, 0.4);
     border-color: #DC3E05;
     cursor: pointer;
 }
 
-/*   DOTS     */
+/*  WORKSHOP SIGN UP FORM  */
+
+.subtitle {
+    color: red;
+}
+
+.multifield-line {
+    display: flex;
+}
+
+#email-field, #workshop-type-field, #contact-name-field {
+    width: 48.5%;
+    margin-right: 1.5%;
+}
+
+#phone-field, #date-field, #contact-email-field {
+    width: 50%;
+}
+
+#add-mailing-list {
+    margin-top: 10px;
+}
+
+/*  WORKSHOP SIGN UP BUTTON  */
+
+.signup-button {
+    display: block;
+    padding: 8px;
+    margin: auto;
+    margin-bottom: 20px;
+    width: 200px;
+    height: 40px;
+    text-decoration: none;
+    text-align: center;
+    border-radius: 7px;
+    background-color: white;
+    border: 2px solid #FE642E;
+    color: black;
+}
+
+.signup-button:hover {
+    background-color: rgba(254, 100, 46, 0.4);
+    border-color: #DC3E05;
+    text-decoration: none;
+    color: black;
+    cursor: pointer;
+}
+
+/*  DOTS  */
 
 .dot {
     display: inline-block;
@@ -259,19 +303,21 @@ input[type="submit"]:hover {
 .red {
     background-color: red;
 }
+
 .yellow {
     background-color: yellow;
 }
+
 .blue {
     background-color: blue;
 }
 
-
-/* PICTURES */
+/*  PICTURES  */
 
 .studio-picture-container {
     text-align: center;
 }
+
 .studio-picture {
     display: inline-block;
     width: 30%;
@@ -279,13 +325,16 @@ input[type="submit"]:hover {
     border-radius: 5px;
     background-color: rgba(0, 0, 0, 0);
 }
+
 .studio-picture:last-child {
     margin-right: 0;
 }
+
 .studio-picture:hover {
     background-color: rgba(100, 100, 100, 0.5);
     cursor: pointer;
 }
+
 img.studio-picture-img {
     display: block;
     width: 100%;
@@ -293,15 +342,18 @@ img.studio-picture-img {
     z-index: -1;
     position: relative;
 }
+
 .overlay-delete-image {
     padding: 5px;
     border-radius: 5px;
     background-color: #A00;
     color: white;
 }
+
 .overlay-delete-image:hover {
     background-color: #D00;
 }
+
 .rightmost {
     margin-right: 0;
     padding-right: 0;
@@ -316,12 +368,14 @@ img.studio-picture-img {
     height: 100%;
     background-color: rgba(0, 0, 0, 0.7);
 }
+
 #picture-popout {
     max-width: 60vw;
     max-height: 80vh;
     margin: 0 auto;
     margin-top: 10%;
 }
+
 #picture-popout-close {
     position: relative;
     height: 30px;
@@ -338,6 +392,7 @@ img.studio-picture-img {
     border-bottom-left-radius: 15px;
     z-index: 3;
 }
+
 #picture-popout-close:hover {
     cursor: pointer;
     color: #F55;
@@ -353,7 +408,7 @@ img.studio-picture-img {
     z-index: 2;
 }
 
-/* SLIDER -- credit: http://responsiveslides.com/ */
+/*  SLIDER -- credit: http://responsiveslides.com/  */
 
 .rslides { 
     position: relative;
@@ -387,7 +442,7 @@ img.studio-picture-img {
     border: 0;
 }
 
-/* GOOGLE CALENDAR */
+/*  GOOGLE CALENDAR  */
 
 .google-calendar-container {
     display: block;
@@ -398,31 +453,44 @@ img.studio-picture-img {
     margin: 0 auto;
 }
 
-/* Workshop Sign Up Form */
+/*  MODAL POPUP  */
 
-.signup-button {
-    display: block;
-    padding: 8px;
+.modal {
+    display: none; 
+    z-index: 1;
+    padding-top: 5%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%; 
+    height: 100%; 
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.5);
+    overflow: auto;
+}
+
+.modal-content {
     margin: auto;
-    margin-bottom: 20px;
-    width: 200px;
-    height: 40px;
-    text-decoration: none;
-    text-align: center;
-    border-radius: 10px;
+    padding: 0;
+    position: relative;
+    width: 80%;
+    height: 80%;
+    box-shadow: 0 10px 20px 0 rgba(0,0,0,0.2);
+    border-radius: 8px;
     background-color: white;
-    border: 2px solid #FE642E;
-    color: black;
+    -webkit-animation-name: animatetop;
+    -webkit-animation-duration: 0.4s;
+    animation-name: animatetop;
+    animation-duration: 0.4s;
+    overflow: auto;
 }
 
-.signup-button:hover {
-    background-color: rgba(254, 100, 46, 0.4);
-    border-color: #DC3E05;
-    text-decoration: none;
-    color: black;
-    cursor: pointer;
+@-webkit-keyframes animatetop {
+    from {top: -300px; opacity: 0} 
+    to {top: 0; opacity: 1}
 }
 
-
-
-
+@keyframes animatetop {
+    from {top: -300px; opacity: 0}
+    to {top: 0; opacity: 1}
+}

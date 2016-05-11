@@ -53,14 +53,15 @@
 
         echo '<form id="contact-form" class="form" method="post" action="../pages/contactus.php#contact-form">
                     <div class="soft-text">All fields required.</div>
-                    <input id="name" class="soft-text short-text ' . $valid["name"] . '" type="text" required name="name" title="Please enter your name" placeholder="' . $initial_values["name"] . '">
-                    <input id="email" class="soft-text short-text ' . $valid["email"] . '" type="text" required name="email" title="Please enter your email" placeholder="' . $initial_values["email"] . '">
-                    <input id="subject" class="soft-text wide-text ' . $valid["subject"] . '" type="text" required name="subject" title="Please enter a subject for your message." placeholder="' . $initial_values["subject"] . '">
-                    <textarea id="msg" class="wide-text ' . $valid["msg"] . '" form="contact-form" required name="msg" rows=8 title="Please enter a body for your message." placeholder="' . $initial_values["msg"] . '"></textarea>';
+                    <div class="multifield-line">
+                        <input id="contact-name-field" class="'.$valid["name"].'" type="text" required name="name" title="Please enter your name" placeholder="'.$initial_values["name"].'">
+                        <input id="contact-email-field" class="'.$valid["email"].'" type="text" required name="email" title="Please enter your email" placeholder="'.$initial_values["email"].'">
+                    </div>
+                    <input id="contact-subject-field" class="wide-text '.$valid["subject"].'" type="text" required name="subject" title="Please enter a subject for your message." placeholder="'.$initial_values["subject"].'">
+                    <textarea id="contact-msg-field" class="wide-text '.$valid["msg"].'" form="contact-form" required name="msg" rows=8 title="Please enter a body for your message." placeholder="'.$initial_values["msg"].'"></textarea>';
 
         foreach ($initial_values as $field => $value) {
-            echo "\n
-                    <label for=\"$field\" class=\"no-show\">$value</label>";
+            echo "\n<label for=\"$field\" class=\"no-show\">$value</label>";
         }
 
         echo '
