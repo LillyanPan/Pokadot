@@ -2,48 +2,68 @@
  * = Validation Functions = *
  * ======================== */ 
 
- // Check that input field contains 1) only letters, numbers, spaces, dashes, commas, and underscores and 2) not just all spaces
-function validTextInput(id, text) {
-	var allLegalChars = /^[A-Za-z0-9\s-_,]+$/.test(text); // Return False if contains illegal chars
-	var notAllSpaces = /\S/.test(text); // Return False if all spaces
-	var isValidName = allLegalChars && notAllSpaces;
-
-	updateFieldBorder(id, isValidName);
-
-	if (!allLegalChars) {
-		updateErrorMessage(id, "Letters, numbers, spaces, dashes, commas, and underscores only.");
-	} else if (!notAllSpaces) {
-		updateErrorMessage(id, "Cannot be empty or contain only spaces.");
-	}
-	
-	return (isValidName);
-}
-
- // Check that input field contains only letters, numbers, spaces, dashes, and underscores 
-function validSearchInput(id, text) {
-	var allLegalChars = /^[A-Za-z0-9\s-_]+$/.test(text); // Return False if contains illegal chars
-	var empty = text.trim() == ""; // Return False if all spaces
-	var isValidName = allLegalChars || empty;
-
-	updateFieldBorder(id, isValidName);
+// Check that input contains only letters and whitespaces
+function validName(id, text) {
+	var isValidName = /^[a-zA-Z ]*$/.test(text);
+	document.getElementById(id).className = isValidName ? "" : "invalid";
 
 	if (!isValidName) {
-		console.log("illegal: " + id + "; text: " + text);
-		updateErrorMessage(id, "Letters, numbers, spaces, dashes, commas, and underscores only.");
+		updateErrorMessage(id, "Name should only contain letters and whitespace.");
 	}
 	
-	return (isValidName);
+	return isValidName;
+}
+
+// Check that input is a valid email
+function validEmail(id, text) {
+	var isValidEmail = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/.test(text);
+	document.getElementById(id).className = isValidEmail ? "" : "invalid";
+
+	if (!isValidEmail) {
+		updateErrorMessage(id, "Please enter a valid email address.");
+	}
+	
+	return isValidEmail;
+}
+
+// Check that input is a valid phone number in the correct format (XXX-XXX-XXXX)
+function validPhoneNumber(id, text) {
+	var phoneNumber = text.match(/^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/);
+	var isValidPhoneNumber = (phoneNumber != null);
+	document.getElementById(id).className = isValidPhoneNumber ? "" : "invalid";
+
+	if (!isValidPhoneNumber) {
+		updateErrorMessage(id, "Please enter a valid phone number (XXX-XXX-XXXX).");
+	}
+	
+	return isValidPhoneNumber;
 }
 
 // Validate all user input fields for workshop signup form
 function validWorkshopSignupForm() {
-	var username = validTextInput("username-field", document.forms.loginForm.username.value); 
-	var password = validTextInput("password-field", document.forms.loginForm.password.value); 
-	var isValidForm = (username && password);
+	console.log("form submitted");
+	var name = validName("name-field", document.forms.signupForm.name.value); 
+	var email = validEmail("email-field", document.forms.signupForm.email.value); 
+	var phone = validPhoneNumber("phone-field", document.forms.signupForm.phone.value); 
+	var isValidForm = (name && email && phone);
 
 	if (isValidForm) {
-		updateErrorMessage("username-field", "");
+		updateErrorMessage("name-field", "");
 	}
 
 	return isValidForm;
 }
+
+/* ==================== *
+ * = Helper Functions = *
+ * ==================== */ 
+
+// Show error message for input forms
+function updateErrorMessage(id, errorMessage) { 
+	var signupFields = ["name-field", "email-field", "phone-field"];
+
+	if (signupFields.indexOf(id) != -1) {
+		document.getElementById("signup-error-message").innerHTML = errorMessage;
+	}
+}
+

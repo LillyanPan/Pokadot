@@ -13,6 +13,7 @@
 
 </head>
 <body>
+
     <div class="container">
 
         <?php $current=3; include "../components/banner_and_nav.php"; ?>
@@ -29,8 +30,6 @@
         <div class="row">
             <div class="col-md-3 col-sm-3"></div>
             <div class="col-md-6 col-sm-6">
-                <h1 class="indexHeader">Sign Up For a Workshop!</h1>
-                <h3 id='signup-error-message' class='subtitle'></h3>
                 <?php include "../components/sign_up_form.php" ?>
             </div>
             <div class="col-md-3 col-sm-3"></div>

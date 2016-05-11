@@ -1,12 +1,5 @@
 <?php
 
-    /*
-    This file already has some form validation implemented. However, we 
-    want to improve the validation by preventing code injection by
-    stripping HTML tags and elements. We will use regexes and filter
-    input functions to implement further form validation. 
-    */
-
     $initial_values = array(
         "name" => "Name",
         "email" => "Email Address",
@@ -35,22 +28,14 @@
 
     if ($submitted and $all_valid) {
         $to = "gopokadot@gmail.com";
-        $subject = "POKADOT customer contact: " . $_POST['name'] . " [" . $_POST['subject'] . "]";
-        $message = "From " . $_POST['name'] . " <" . $_POST['email'] . "> (add to email list: " . (isset($_POST['add-mailing-list']) ? "yes" : "no") . ")\n--------------------------\n\n"  . $_POST['msg'];
+        $subject = "POKADOT customer contact: ".$_POST['name']." [".$_POST['subject']."]";
+        $message = "From ".$_POST['name']." <".$_POST['email']."> (add to email list: ".(isset($_POST['add-mailing-list']) ? "yes" : "no").")\n--------------------------\n\n".$_POST['msg'];
         mail($to, $subject, $message);
-        echo '<p class="line-after">
-                    Thank you, ' . htmlspecialchars($_POST["name"]) . ', for sending us a message!
-                </p>
-                <p class=" soft-text block-quote">
-                    ' . str_replace("\n", "<br>", htmlspecialchars($_POST["msg"])) . '
-                </p>
-        ';
+        echo '<p class="line-after">Thank you, '.htmlspecialchars($_POST["name"]).', for sending us a message!</p>
+                <p class="soft-text block-quote">'.str_replace("\n", "<br>", htmlspecialchars($_POST["msg"])).'</p>';
         $_POST = array();
         $_SERVER["REQUEST_METHOD"] = "GET";
-    }
-    else {
-        // $values = $submitted ? $_POST : $initial_values;
-
+    } else {
         echo '<form id="contact-form" class="form" method="post" action="../pages/contactus.php#contact-form">
                     <div class="soft-text">All fields required.</div>
                     <div class="multifield-line">
@@ -64,12 +49,10 @@
             echo "\n<label for=\"$field\" class=\"no-show\">$value</label>";
         }
 
-        echo '
-                    <input id="add-mailing-list" name="add-mailing-list" type="checkbox">
-                        <label for="add-mailing-list">Add me to the email list</label>
+            echo '<input id="add-mailing-list" name="add-mailing-list" type="checkbox">
+                    <label for="add-mailing-list">Add me to the email list</label>
                     <input type="submit" value="Send Message">
-                </form>
-                ';
+             </form>';
     }
 
 ?>
