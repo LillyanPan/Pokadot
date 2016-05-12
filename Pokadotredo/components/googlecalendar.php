@@ -1,4 +1,5 @@
 <?php
+
     include('../google-api-php-client/src/Google/autoload.php'); 
 
     $workshopTimes = array();
@@ -7,8 +8,12 @@
     $client = new Google_Client();
     $client->setApplicationName("Pokadot Workshop Calendar");
     $client->setDeveloperKey('AIzaSyC6qF0bQUBISpB47eiGJaDKEK8JrICqhKE');
+    $client->setClientId('730261096090-d4c97cn6jb1sv3aifooj8jvgtkt5kene.apps.googleusercontent.com');
+    $client->setRedirectUri('../pages/signup.php');
+
     $cal = new Google_Service_Calendar($client);
     $calendarId = '8ck8ha14j21jmdhrtd43a6q6rg@group.calendar.google.com';
+    $privateCalendarId = 'gopokadot@gmail.com';
 
     // Parameters for calendar events
     $params = array(
@@ -19,10 +24,11 @@
     );
 
     $events = $cal->events->listEvents($calendarId, $params); // Get calendar events
+    $calendarEvents = $events->getItems();
     $calTimeZone = $events->timeZone; // Timezone of calendar
     date_default_timezone_set($calTimeZone); // Set default time zone to local time zone
  
-    foreach ($events->getItems() as $event) {
+    foreach ($calendarEvents as $event) {
         $eventStartDateStr = $event->start->dateTime;
         $eventEndDateStr = $event->end->dateTime;
 

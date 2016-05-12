@@ -1,8 +1,6 @@
 <?php
     include "googlecalendar.php";
 
-    global $workshopTimes;
-
     $appointment_info = array(
         "name" => "Name",
         "email" => "Email Address",
@@ -33,6 +31,7 @@
         $workshopType = $workshops[$_POST["workshop-type"]]; 
         $comments = test_input($_POST["comments"]);
 
+        // Notify Pokadot about new workshop sign up
         $to = "gopokadot@gmail.com";
         $subject = "POKADOT customer contact: {$name}";
         $message = "From {$name} <{$email}> (add to email list: ".(isset($_POST['add-mailing-list']) ? "yes" : "no").")\n--------------------------\n\n" . 
@@ -40,9 +39,38 @@
             "Date: {$date}\n\n" .
             "Workshop Type: {$workshopType}\n\n" .
             "Comments: {$comments}";
-
         // mail($to, $subject, $message);
+
+        // Notify user with confirmation email
+        $confirmationSubject = "POKADOT Workshop Confirmation";
+        $confirmationMessage = "Hi {$name}, \n\n Thank you for signing up for a workshop with Pokadot! Here are the details of your appointment:" . 
+            "Phone: {$phone}\n\n" .
+            "Date: {$date}\n\n" .
+            "Workshop Type: {$workshopType}\n\n" .
+            "Comments: {$comments}\n\n" .
+            "We will contact you shortly!";
+        // mail($email, $confirmationSubject, $confirmationMessage);
+
+        // Update Available Workshop Times and Pokadot Google Calendars
         $summary = nl2br("<b>Name:</b> {$name} \n <b>Email:</b> {$email} \n <b>Phone Number:</b> {$phone} \n <b>Date:</b> {$date} \n <b>Workshop Type:</b> {$workshopType} \n <b>Comments:</b> {$comments}");
+
+        $event = $calendarEvents[$_POST["date"]];
+        $eventID = $event["id"];
+        $deletedEvent = $cal->events->delete($calendarId, $eventID); // Delete event from available times calendar
+
+        // Add event to main Pokadot Google Calendar
+        // $newEvent = new Google_Event();
+        // $newEvent->setSummary('Workshop with {$name}');
+        // $newEvent->setDescription("Name: {$name} \n Email: {$email} \n Phone Number: {$phone} \n Date: {$date} \n Workshop Type: {$workshopType} \n Comments: {$comments}";
+        // $start = new Google_EventDateTime();
+        // $start->setDateTime($event->start->dateTime);
+        // $newEvent->setStart($start);
+        // $end = new Google_EventDateTime();
+        // $end->setDateTime($event->end->dateTime);
+        // $newEvent->setEnd($end);
+        // $createdEvent = $cal->events->insert($privateCalendarId, $newEvent);
+
+        // Show workshop sign up confirmation message
         echo '<h1 class="indexHeader">Thank you for signing up for a workshop!</h1>';
         echo '<p class="subheader-center">Your Appointment:</p>';
         echo '<p class="soft-text block-quote">'.$summary.'</p>';
@@ -75,7 +103,7 @@
                     echo '</select>
                     </div>';
 
-                echo '<textarea id="comments" form="signup-form" name="comments" rows=8 placeholder="'.$appointment_info["comments"].'"></textarea>
+                echo '<textarea id="comments" form="signup-form" name="comments" rows=8 placeholder="'.$appointment_info["comments"].' (i.e. Preferred Location, Special Accommodations)"></textarea>
                     <input id="add-mailing-list" name="add-mailing-list" type="checkbox">
                     <label for="add-mailing-list">Add me to the email list</label>
                     <input class="signup-button" type="submit" name="signup" value="Sign Up">
