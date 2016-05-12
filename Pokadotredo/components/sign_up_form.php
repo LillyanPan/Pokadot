@@ -1,4 +1,7 @@
 <?php
+    include "googlecalendar.php";
+
+    global $workshopTimes;
 
     $appointment_info = array(
         "name" => "Name",
@@ -26,7 +29,7 @@
         $name = test_input($_POST["name"]);
         $email = test_input($_POST["email"]);
         $phone = test_input($_POST["phone"]);
-        $date = test_input($_POST["date"]);
+        $date = $workshopTimes[$_POST["date"]]; 
         $workshopType = $workshops[$_POST["workshop-type"]]; 
         $comments = test_input($_POST["comments"]);
 
@@ -54,19 +57,26 @@
                         <input id="phone-field" type="tel" name="phone" placeholder="'.$appointment_info["phone"].' (XXX-XXX-XXXX)" title="Please enter a phone number.">
                     </div>
                     <div class="multifield-line">
-                        <select id="workshop-type-field" name="workshop-type" required title="Please select a workshop!">
-                            <option class="workshop-default" selected="selected" value>Workshop</option>';
+                        <select id="workshop-type-field" name="workshop-type" onchange="changeColor(this);" required title="Please select a workshop!">
+                            <option selected="selected" value>Workshop</option>';
 
                             for ($i = 0; $i < count($workshops); $i++) {
                                 echo "<option value='{$i}'>{$workshops[$i]}</option>";
                             } 
 
-                echo '</select>
-                       <input id="date-field" type="datetime-local" name="date" required title="Please enter a date.">
-                    </div>
-                    <textarea id="comments" form="signup-form" name="comments" rows=8 placeholder="'.$appointment_info["comments"].'"></textarea>';
+                    echo '</select>';
+                    echo '<select id="date-field" type="datetime-local" name="date" onchange="changeColor(this);" required title="Please select a workshop date and time.">
+                            <option selected="selected" value>Date and Time</option>';
 
-                echo '<input id="add-mailing-list" name="add-mailing-list" type="checkbox">
+                            for ($i = 0; $i < count($workshopTimes); $i++) {
+                                echo "<option value='{$i}'>{$workshopTimes[$i]}</option>";
+                            } 
+
+                    echo '</select>
+                    </div>';
+
+                echo '<textarea id="comments" form="signup-form" name="comments" rows=8 placeholder="'.$appointment_info["comments"].'"></textarea>
+                    <input id="add-mailing-list" name="add-mailing-list" type="checkbox">
                     <label for="add-mailing-list">Add me to the email list</label>
                     <input class="signup-button" type="submit" name="signup" value="Sign Up">
               </form>';
