@@ -12,6 +12,9 @@
 
 </head>
 <body>
+
+    <?php include "../components/handle_image_add_delete.php"; ?>
+
     <div class="container">
 
         <?php $current=2; include "../components/banner_and_nav.php"; ?>

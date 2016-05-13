@@ -19,6 +19,8 @@
 
         <?php $current=2; include "../components/banner_and_nav.php"; ?>
 
+        <?php include "../components/picture_popout.php" ?>
+
          <!-- SECTION END -->
          <div class="row">
             <div class="col-md-1 col-xs-1"></div>
@@ -26,8 +28,6 @@
             <div class="col-md-1 col-xs-1"></div>
         </div>
         <!-- SECTION END -->
-
-        <?php include "../components/picture_popout.php" ?>
 
         <div class="row">
            <div class="col-md-3 col-sm-3"></div>

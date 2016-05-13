@@ -42,26 +42,21 @@
         $insert_stmt->bindParam(":description", $description);
         if ($insert_stmt->execute()) {
             $image_id = $pdo->lastInsertId();
-            echo "INSERT INTO images_in_groups (image_id, group_id)
-                 SELECT $image_id, group_id FROM groups WHERE group_name='$group_name';";
             $group_stmt = $pdo->prepare(
                 "INSERT INTO images_in_groups (image_id, group_id)
                  SELECT $image_id, group_id FROM groups WHERE group_name=:groupname;");
             // $group_stmt->bindParam(":imageid", $image_id);
             $group_stmt->bindParam(":groupname", $group_name);
             if ($group_stmt->execute()) {
-                echo "commiting";
                 $pdo->commit();
             }
             else {
-                echo "group error";
-                print_r($group_stmt->errorInfo());
+                echo "<h1>Error updating database</h1>";
                 $pdo->rollBack();
             }
         }
         else{
-            echo "insert error";
-            print_r($insert_stmt->errorInfo());
+            echo "<h1>Error updating database</h1>";
             $pdo->rollBack();
         }
     }
