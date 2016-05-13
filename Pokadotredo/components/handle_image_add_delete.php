@@ -1,6 +1,7 @@
 <?php
     require_once "../config.php";
     $pdo = new PDO("mysql: host=".DB_HOST.";dbname=".DB_NAME, DB_USER, DB_PASSWORD);
+    // image add
     if (!empty($_SESSION['user']) && !empty($_POST["add_image"])) {
         $group_name = filter_input(INPUT_POST, "group_name", FILTER_SANITIZE_SPECIAL_CHARS);
         $description = filter_input(INPUT_POST, "image_desc", FILTER_SANITIZE_SPECIAL_CHARS);
@@ -59,5 +60,40 @@
             echo "<h1>Error updating database</h1>";
             $pdo->rollBack();
         }
+    }
+    // image delete
+    else if (!empty($_SESSION['user']) && !empty($_POST["delete_image"])) {
+        $image_id = filter_input(INPUT_POST, "image_id", FILTER_SANITIZE_NUMBER_INT);
+        // database
+        $pdo->beginTransaction();
+        $file_stmt = $pdo->prepare("SELECT filepath FROM images WHERE image_id=:imageid");
+        $file_stmt->bindParam(":imageid", $image_id);
+        $file_stmt->execute();
+        $filename = $file_stmt->fetch()['filepath'];
+        $remove_image_groups_stmt = $pdo->prepare(
+            "DELETE FROM images_in_groups WHERE image_id=:imageid");
+        $remove_image_groups_stmt->bindParam(":imageid", $image_id);
+        $remove_image_groups_stmt->execute();
+        if ($remove_image_groups_stmt->execute()) {
+            $remove_image_stmt = $pdo->prepare("DELETE FROM images WHERE image_id=:imageid");
+            $remove_image_stmt->bindParam(":imageid", $image_id);
+            if ($remove_image_stmt->execute())
+                $pdo->commit();
+            else {
+                echo "<h1>Error removing image</h1>";
+                $pdo->rollBack();
+                exit();
+            }
+
+        }
+        else {
+            echo "<h1>Error removing image</h1>";
+            $pdo->rollBack();
+            exit();
+        }
+        // file
+        $filepath = "../images/$filename";
+        unlink($filepath);
+        unlink(str_replace("_small", "", $filepath));
     }
 ?>

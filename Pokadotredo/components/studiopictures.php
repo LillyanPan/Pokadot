@@ -5,7 +5,7 @@
         if (!empty($_SESSION['user']))
             include "../components/manage_image_group.php";
         $stmt = $pdo->prepare(
-           "SELECT filepath, description
+           "SELECT images.image_id, filepath, description
             FROM images 
                 LEFT JOIN images_in_groups
                     ON images.image_id=images_in_groups.image_id
@@ -23,8 +23,8 @@
             if (!empty($_SESSION['user'])) {
                 echo "
                     <form method='POST'>
-                        <input type='hidden' name='group_name' value='$group_name'>
-                        <input type='submit' name='delete-image' value='delete' class='delete-image-button'>
+                        <input type='hidden' name='image_id' value=$pic[image_id]>
+                        <input type='submit' name='delete_image' value='delete' class='delete-image-button'>
                     </form>";
             }
             echo "
