@@ -39,26 +39,37 @@
             "Date: {$date}\n\n" .
             "Workshop Type: {$workshopType}\n\n" .
             "Comments: {$comments}";
-        // mail($to, $subject, $message);
+        mail($to, $subject, $message);
 
         // Notify user with confirmation email
         $confirmationSubject = "POKADOT Workshop Confirmation";
-        $confirmationMessage = "Hi {$name}, \n\n Thank you for signing up for a workshop with Pokadot! Here are the details of your appointment:" . 
-            "Phone: {$phone}\n\n" .
-            "Date: {$date}\n\n" .
-            "Workshop Type: {$workshopType}\n\n" .
-            "Comments: {$comments}\n\n\n\n" .
+        $confirmationMessage = "Hi {$name}, \n\nThank you for signing up for a workshop with Pokadot! Here are the details of your appointment:" . 
+            "\n\nPhone: {$phone}\n" .
+            "Date: {$date}\n" .
+            "Workshop Type: {$workshopType}\n" .
+            "Comments: {$comments}\n\n" .
             "We will contact you shortly!\n\n" .
             "- The Pokadot Team";
-        // mail($email, $confirmationSubject, $confirmationMessage);
+        mail($email, $confirmationSubject, $confirmationMessage);
 
         // Update Available Workshop Times and Pokadot Google Calendars
         $summary = nl2br("<b>Name:</b> {$name} \n <b>Email:</b> {$email} \n <b>Phone Number:</b> {$phone} \n <b>Date:</b> {$date} \n <b>Workshop Type:</b> {$workshopType} \n <b>Comments:</b> {$comments}");
 
+        // Delete event from Available Workshop Times calendar
         $event = $calendarEvents[$_POST["date"]];
         $eventID = $event["id"];
-        $deletedEvent = $cal->events->delete($calendarId, $eventID); // Delete event from available times calendar
-        // $createdEvent = $cal->events->insert($privateCalendarId, $event);
+        $eventStart = $event->start;
+        $eventEnd = $event->end;
+        $deletedEvent = $cal->events->delete($calendarId, $eventID); 
+
+        // Add event to Pokadot Main Calendar
+        $newEvent = new Google_Service_Calendar_Event(array(
+          'summary' => "Workshop with {$name}",
+          'description' => "Name: {$name} \nEmail: {$email} \nPhone Number: {$phone} \nDate: {$date} \nWorkshop Type: {$workshopType} \nComments: {$comments}",
+          'start' => $eventStart,
+          'end' => $eventEnd
+        ));
+        $createdEvent = $cal->events->insert($privateCalendarId, $newEvent);
 
         // Show workshop sign up confirmation message
         echo '<h1 class="indexHeader">Thank you for signing up for a workshop!</h1>';

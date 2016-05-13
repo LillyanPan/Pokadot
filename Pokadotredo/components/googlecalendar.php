@@ -15,7 +15,6 @@
     $clientSecret = 'ia1QgLUP3kO_srwnCQ58Rn1Q';
     $scopes = array('https://www.googleapis.com/auth/calendar');
     $redirectUri = 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['PHP_SELF'];
-    $authUrl = '';
     $service_account_name = 'pokadot-service-account@pokadot-1308.iam.gserviceaccount.com';
     $key_file_location = '../Pokadot-767a91b0fe40.p12';
 
@@ -46,7 +45,7 @@
         $key,
         'notasecret',                                 // Default P12 password
         'http://oauth.net/grant_type/jwt/1.0/bearer', // Default grant type
-        'gopokadot@gmail.com' // User to impersonate
+        'gopokadot@gmail.com'                         // User to impersonate
     );
 
     $client->setAssertionCredentials($cred);
