@@ -208,6 +208,7 @@ select {
     -webkit-appearance: none;
     -webkit-border-radius: 0px;
     background-color: white;
+    color: #A9A9A9;
 }
 
 label {

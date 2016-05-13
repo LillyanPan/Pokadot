@@ -13,6 +13,17 @@
 
 </head>
 <body>
+    <?php
+        // Define location of Google API PHP files
+        set_include_path(get_include_path() . PATH_SEPARATOR . '../google-api-php-client/src');
+    ?>
+
+    <script>
+        // Set default color of select to gray 
+        function changeColor(select) {
+            document.getElementById(select.id).style.color = (select.value) ? "black" : "#A9A9A9";
+        }
+    </script>
 
     <div class="container">
 
@@ -35,14 +46,6 @@
             <div class="col-md-3 col-sm-3"></div>
         </div>
 
-        <!-- The below code displays the Available Workshop Times calendar. 
-             Currently, it is commented out because users are simply signing
-             up for time slots, so the calendar is unnecessary. However, we 
-             have left this code here as requested by the client in case she
-             wants to display specific workshops on the calendar in the future.
-         -->
-
-<!--     
          <div class="row">
             <div class="col-md-1 col-xs-1"></div>
             <div class="col-md-10 col-xs-10 endSection final"></div>
@@ -57,7 +60,6 @@
             </div>
             <div class="col-md-3 col-sm-3"></div>
         </div> 
--->
 
         <!-- SECTION END -->
          <div class="row">
