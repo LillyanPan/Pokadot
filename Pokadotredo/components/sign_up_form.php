@@ -47,8 +47,9 @@
             "Phone: {$phone}\n\n" .
             "Date: {$date}\n\n" .
             "Workshop Type: {$workshopType}\n\n" .
-            "Comments: {$comments}\n\n" .
-            "We will contact you shortly!";
+            "Comments: {$comments}\n\n\n\n" .
+            "We will contact you shortly!\n\n" .
+            "- The Pokadot Team";
         // mail($email, $confirmationSubject, $confirmationMessage);
 
         // Update Available Workshop Times and Pokadot Google Calendars
@@ -57,18 +58,7 @@
         $event = $calendarEvents[$_POST["date"]];
         $eventID = $event["id"];
         $deletedEvent = $cal->events->delete($calendarId, $eventID); // Delete event from available times calendar
-
-        // Add event to main Pokadot Google Calendar
-        // $newEvent = new Google_Event();
-        // $newEvent->setSummary('Workshop with {$name}');
-        // $newEvent->setDescription("Name: {$name} \n Email: {$email} \n Phone Number: {$phone} \n Date: {$date} \n Workshop Type: {$workshopType} \n Comments: {$comments}";
-        // $start = new Google_EventDateTime();
-        // $start->setDateTime($event->start->dateTime);
-        // $newEvent->setStart($start);
-        // $end = new Google_EventDateTime();
-        // $end->setDateTime($event->end->dateTime);
-        // $newEvent->setEnd($end);
-        // $createdEvent = $cal->events->insert($privateCalendarId, $newEvent);
+        // $createdEvent = $cal->events->insert($privateCalendarId, $event);
 
         // Show workshop sign up confirmation message
         echo '<h1 class="indexHeader">Thank you for signing up for a workshop!</h1>';

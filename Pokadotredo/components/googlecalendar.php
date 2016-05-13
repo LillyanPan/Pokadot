@@ -1,15 +1,61 @@
 <?php
+    session_start();
+    require_once '../google-api-php-client/src/Google/autoload.php'; 
+    require_once '../google-api-php-client/src/Google/Client.php';
+    require_once '../google-api-php-client/src/Google/Service/Calendar.php';
 
-    include('../google-api-php-client/src/Google/autoload.php'); 
+    // Debugging
+    error_reporting(E_ALL);
+    ini_set("display_errors", 1);
 
-    $workshopTimes = array();
-     
+    // Google Calendar Credentials
+    $applicationName = 'Pokadot Workshop Calendar';
+    $developerKey = 'AIzaSyC6qF0bQUBISpB47eiGJaDKEK8JrICqhKE';
+    $clientId = '730261096090-d4c97cn6jb1sv3aifooj8jvgtkt5kene.apps.googleusercontent.com';
+    $clientSecret = 'ia1QgLUP3kO_srwnCQ58Rn1Q';
+    $scopes = array('https://www.googleapis.com/auth/calendar');
+    $redirectUri = 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['PHP_SELF'];
+    $authUrl = '';
+    $service_account_name = 'pokadot-service-account@pokadot-1308.iam.gserviceaccount.com';
+    $key_file_location = '../Pokadot-767a91b0fe40.p12';
+
     // Set credentials for access to Google Calendar API
     $client = new Google_Client();
-    $client->setApplicationName("Pokadot Workshop Calendar");
-    $client->setDeveloperKey('AIzaSyC6qF0bQUBISpB47eiGJaDKEK8JrICqhKE');
-    $client->setClientId('730261096090-d4c97cn6jb1sv3aifooj8jvgtkt5kene.apps.googleusercontent.com');
-    $client->setRedirectUri('../pages/signup.php');
+    $client->setApplicationName($applicationName);
+    $client->setDeveloperKey($developerKey);
+    $client->setClientId($clientId);
+    $client->setClientSecret($clientSecret);
+    $client->setRedirectUri($redirectUri);
+    $client->setScopes($scopes);
+    $client->setAccessType('offline'); // Gets the refresh token
+    $client->setApprovalPrompt('auto');
+
+    /* Authenticate admin account */
+
+    if (!strlen($service_account_name) || !strlen($key_file_location))
+        echo missingServiceAccountDetailsWarning();
+
+    if (isset($_SESSION['service_token'])) {
+        $client->setAccessToken($_SESSION['service_token']);
+    }
+
+    $key = file_get_contents($key_file_location);
+    $cred = new Google_Auth_AssertionCredentials(
+        $service_account_name, 
+        $scopes, 
+        $key,
+        'notasecret',                                 // Default P12 password
+        'http://oauth.net/grant_type/jwt/1.0/bearer', // Default grant type
+        'gopokadot@gmail.com' // User to impersonate
+    );
+
+    $client->setAssertionCredentials($cred);
+    if($client->getAuth()->isAccessTokenExpired()) {
+        $client->getAuth()->refreshTokenWithAssertion($cred);
+    }
+    $_SESSION['service_token'] = $client->getAccessToken();
+
+    /* Get Google Calendar events */
 
     $cal = new Google_Service_Calendar($client);
     $calendarId = '8ck8ha14j21jmdhrtd43a6q6rg@group.calendar.google.com';
@@ -27,6 +73,8 @@
     $calendarEvents = $events->getItems();
     $calTimeZone = $events->timeZone; // Timezone of calendar
     date_default_timezone_set($calTimeZone); // Set default time zone to local time zone
+
+    $workshopTimes = array();
  
     foreach ($calendarEvents as $event) {
         $eventStartDateStr = $event->start->dateTime;
