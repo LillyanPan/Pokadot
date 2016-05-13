@@ -228,7 +228,7 @@ input[type="checkbox"] {
     display: inline;
 }
 
-input[type="text"].short-text, textarea.short-text {
+input[type="text"].short-text, input[type="password"].short-text, textarea.short-text {
     max-width: 250px;
     width: 100%;
 }
@@ -350,40 +350,51 @@ input[type="submit"]:hover {
     text-align: center;
 }
 
-.studio-picture {
-    display: inline-block;
-    width: 30%;
-    margin-right: 3%;
-    border-radius: 5px;
-    background-color: rgba(0, 0, 0, 0);
-}
-
-.studio-picture:last-child {
-    margin-right: 0;
-}
-
-.studio-picture:hover {
-    background-color: rgba(100, 100, 100, 0.5);
-    cursor: pointer;
-}
-
-img.studio-picture-img {
+img.studio-picture {
     display: block;
     width: 100%;
     border-radius: 5px;
-    z-index: -1;
     position: relative;
 }
 
-.overlay-delete-image {
+img.studio-picture:hover {
+    background-color: rgba(100, 100, 100, 0.5);
+    cursor: pointer;
+}
+div.studio-picture {
+    position: relative;
+}
+div.studio-picture:hover:after {
+    content: '\1F50D'; /* spyglass */
+    position: absolute;
+    display: block;
+    top: calc(50% - 24px);
+    left: calc(50% - 24px);
+    text-align: center;
+    font-size: 24px;
+    line-height: 48px;
+    vertical-align: middle;
+    border-radius: 24px;
+    width: 48px;
+    height: 48px;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.7);
+    cursor: pointer;
+}
+
+input[type='submit'].delete-image-button {
+    max-width: none;
+    width: 100%;
     padding: 5px;
     border-radius: 5px;
+    border: none;
     background-color: #A00;
     color: white;
 }
 
-.overlay-delete-image:hover {
+input[type='submit'].delete-image-button:hover {
     background-color: #D00;
+    cursor: pointer;
 }
 
 .rightmost {

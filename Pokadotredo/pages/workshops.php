@@ -12,6 +12,9 @@
 
 </head>
 <body>
+
+    <?php include "../components/handle_image_add_delete.php"; ?>
+
     <div class="container">
 
         <?php $current=2; include "../components/banner_and_nav.php"; ?>
@@ -54,10 +57,8 @@
             <div class="col-md-8 col-sm-10">
                 <h1 class="indexHeader"><span class="dot blue"></span> Art - 5 to 105 years old</h1>
                 <?php
-                $studio_pictures = array( "../images/artkidtechs1_small.jpg",
-                                          "../images/artkidtechs2_small.jpg",
-                                          "../images/artkidtechs3_small.jpg");
-                include "../components/studiopictures.php";
+                    $group_name = "blue-dot";
+                    include "../components/studiopictures.php";
                 ?>
             </div>
             <div class="col-md-2 col-sm-1"></div>
@@ -75,11 +76,9 @@
             <div class="col-md-2 col-sm-1"></div>
             <div class="col-md-8 col-sm-10">
                 <h1 class="indexHeader"><span class="dot yellow"></span> Art - 3 year olds and up</h1>
-               <?php
-                $studio_pictures = array( "../images/artexplorers1_small.jpg",
-                                          "../images/artexplorers2_small.jpg",
-                                          "../images/artexplorers3_small.jpg");
-                include "../components/studiopictures.php";
+                <?php
+                    $group_name = "yellow-dot";
+                    include "../components/studiopictures.php";
                 ?>
             </div>
             <div class="col-md-2 col-sm-1"></div>
@@ -98,10 +97,8 @@
             <div class="col-md-8 col-sm-10">
                 <h1 class="indexHeader"><span class="dot red"></span> Art - 1 year olds and up</h1>
                 <?php
-                $studio_pictures = array( "../images/artdabblers1_small.jpg",
-                                          "../images/artdabblers2_small.jpg",
-                                          "../images/artdabblers3_small.jpg");
-                include "../components/studiopictures.php";
+                    $group_name = "red-dot";
+                    include "../components/studiopictures.php";
                 ?>
             </div>
             <div class="col-md-2 col-sm-1"></div>
@@ -120,6 +117,6 @@
     </div><!-- container -->
 
     <?php include "../components/globalscripts.php" ?>
-      <script type="text/javascript" src="../js/picture_popout.js"></script>
+    <script type="text/javascript" src="../js/picture_popout.js"></script>
 </body>
 </html>
