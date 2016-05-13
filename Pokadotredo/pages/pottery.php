@@ -54,10 +54,8 @@
             <div class="col-md-8 col-sm-10">
                 <h1 class="indexHeader">Pottery Painting - all ages</h1>
                 <?php
-                $studio_pictures = array( "../images/pottery1_small.jpg",
-                                          "../images/pottery2_small.jpg",
-                                          "../images/pottery3_small.jpg");
-                include "../components/studiopictures.php";
+                    $group_name = "pottery";
+                    include "../components/studiopictures.php";
                 ?>
             </div>
             <div class="col-md-2 col-sm-1"></div>
