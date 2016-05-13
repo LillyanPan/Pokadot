@@ -6,7 +6,7 @@
         if (!empty($_SESSION['user']))
             include "../components/manage_image_group.php";
         $stmt = $pdo->prepare(
-           "SELECT filepath, description
+           "SELECT filename, description
             FROM images LEFT JOIN images_in_groups
                 ON images.image_id=images_in_groups.image_id
             WHERE images_in_groups.group_id=:groupid");
