@@ -1,5 +1,4 @@
 <?php
-    session_start();
     require_once '../google-api-php-client/src/Google/autoload.php'; 
     require_once '../google-api-php-client/src/Google/Client.php';
     require_once '../google-api-php-client/src/Google/Service/Calendar.php';
