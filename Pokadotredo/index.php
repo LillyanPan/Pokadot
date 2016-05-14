@@ -15,9 +15,9 @@
     <script src="js/responsiveSlides.js"></script>
 
     <!-- Source: http://paperjs.org/tutorials/ ! -->
-    <script type="text/javascript" src="js/paper-full.min.js"></script>
+<!--     <script type="text/javascript" src="js/paper-full.min.js"></script>
     <script type="text/paperscript" src="js/paperScript.js" canvas="canvas"></script>
-
+ -->
 </head>
 
 <body>
