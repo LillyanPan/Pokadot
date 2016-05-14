@@ -53,12 +53,10 @@
         </div>
 
         <div class="row">
-            <div class="col-md-3 col-sm-3"></div>
-            <div class="col-md-6 col-sm-6">
+            <div class="col-sm-12">
                 <h1 class="indexHeader">Available Workshop Times!</h1>
                 <?php include "../components/calendar.php" ?>
             </div>
-            <div class="col-md-3 col-sm-3"></div>
         </div> 
 
         <!-- SECTION END -->
