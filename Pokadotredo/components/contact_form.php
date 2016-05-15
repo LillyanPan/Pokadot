@@ -48,9 +48,9 @@
                     <input id="contact-subject-field" class="wide-text '.$valid["subject"].'" type="text" required name="subject" title="Please enter a subject for your message." placeholder="'.$initial_values["subject"].'">
                     <textarea id="contact-msg-field" class="wide-text '.$valid["msg"].'" form="contact-form" required name="msg" rows=8 title="Please enter a body for your message." placeholder="'.$initial_values["msg"].'"></textarea>';
 
-        foreach ($initial_values as $field => $value) {
-            echo "\n<label for=\"$field\" class=\"no-show\">$value</label>";
-        }
+        // foreach ($initial_values as $field => $value) {
+        //     echo "\n<label for=\"$field\" class=\"no-show\">$value</label>";
+        // }
 
             echo '<input id="add-mailing-list" name="add-mailing-list" type="checkbox">
                     <label for="add-mailing-list">Add me to the email list</label>
