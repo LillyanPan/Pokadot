@@ -9,7 +9,6 @@ $(document).ready(function(){
 	$("#whatwedo").click(function(e){
 		$("#whatwedo-menu").slideToggle();
 		e.stopPropagation();
-		e.preventDefault();
 	});
 	$(document).click(function() {
 		$('#whatwedo-menu').slideUp();
