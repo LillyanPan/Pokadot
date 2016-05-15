@@ -1,7 +1,10 @@
-$(document).ready(function() {
+window.onload = function() {
 
     $(".studio-picture").click(function() {
-        var img = $(this).children("img");
+        if ($(this).is("img"))
+            var img = $(this);
+        else
+            var img = $(this).children("img");
         $("#picture-popout-img").attr("src", img.attr("src").replace("_small", ""));
         $("#picture-popout-img").attr("alt", img.attr("alt"));
         $("#picture-popout-container").show();
@@ -18,7 +21,6 @@ $(document).ready(function() {
 
     $("#picture-popout-container").click(function() {
         $(this).hide();
-        
     });
 
-});
+};

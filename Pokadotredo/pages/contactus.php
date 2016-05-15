@@ -4,18 +4,24 @@
 <head>
     <meta charset="utf-8">
     <title>Pok-A-Dot Contact Us</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+
     <script type="text/javascript" src="../js/picture_popout.js"></script>
     <link href='https://fonts.googleapis.com/css?family=Quicksand:400,700' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=PT+Sans:400,700' rel='stylesheet' type='text/css'>
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="../css/main.css">
+
+        <!-- Source: http://paperjs.org/tutorials/ ! -->
+
+    <script type="text/javascript" src="../js/paper-full.min.js"></script>
+    <script type="text/paperscript" src="../js/paperScript.js"></script>
 
 </head>
 <body>
     <div class="container">
 
-         <?php $current=2; include "../components/banner_and_nav.php"; ?>
+         <?php $current=4; include "../components/banner_and_nav.php"; ?>
 
           <!-- SECTION END -->
          <div class="row">
@@ -48,10 +54,13 @@
         <div class="row">
             <div class="col-md-3 col-sm-3"></div>
             <div class="col-md-6 col-sm-6">
-                <h1 class="indexHeader">Email us</h1>
+                <h1 class="indexHeader">Email Us</h1>
                 <?php include "../components/contact_form.php" ?>
             </div>
             <div class="col-md-3 col-sm-3"></div>
+        </div>
+        <div class="row">
+            <div id="form-messages" class="text-center col-md-6 col-sm-6 col-md-offset-3"></div>
         </div>
 
          <!-- SECTION END -->
@@ -66,7 +75,9 @@
 
     </div><!-- container -->
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     <?php include "../components/globalscripts.php" ?>
+    <script type="text/javascript" src="../js/contact-ajax.js"></script>
 
 </body>
 </html>

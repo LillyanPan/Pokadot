@@ -1,15 +1,7 @@
 <?php
+    include "googlecalendar.php";
 
-    /*
-    This file already has some form validation implemented. However, we 
-    want to improve the validation by preventing code injection by
-    stripping HTML tags and elements. Furthermore, we need to integrate
-    the validation feedback by detecting which fields have invalid inputs
-    and display appropriate feedback messages. We will use regexes and 
-    filter input functions to implement further form validation. 
-    */
-
-    $initial_values = array(
+    $appointment_info = array(
         "name" => "Name",
         "email" => "Email Address",
         "phone" => "Phone Number",
@@ -25,77 +17,98 @@
         "Art - 5 to 105 years old",
     );
 
-    $submitted = $_SERVER["REQUEST_METHOD"] == "POST";
-
-    $valid = array_fill_keys(array_keys($initial_values), "");
-    $all_valid = false;
-
-    if ($submitted) {
-        $_POST = array_map(function($str) {return trim($str);}, $_POST); // trim whitespace from answers
-        $valid = array(
-            "name" => $_POST["name"],
-            "email" => filter_var($_POST["email"], FILTER_VALIDATE_EMAIL),
-            "phone" => filter_var($_POST["phone"], FILTER_SANITIZE_NUMBER_INT),
-        );
-        array_walk($valid, function(&$valid_entry, $field) {
-            $valid_entry = $valid_entry ? "" : " invalid";
-        });
-        $all_valid = !array_filter($valid);
+    // Trim input and strip HTML tags
+    function test_input($input) {
+        $input = strip_tags(htmlspecialchars(stripslashes(trim($input)))); 
+        return $input;
     }
 
-    if ($submitted and $all_valid) {
+    if (isset($_POST['signup'])) { // Form was submitted
+        $name = test_input($_POST["name"]);
+        $email = test_input($_POST["email"]);
+        $phone = test_input($_POST["phone"]);
+        $date = $workshopTimes[$_POST["date"]]; 
+        $workshopType = $workshops[$_POST["workshop-type"]]; 
+        $comments = test_input($_POST["comments"]);
+
+        // Notify Pokadot about new workshop sign up
         $to = "gopokadot@gmail.com";
-        $subject = "POKADOT customer contact: " . $_POST['name'] . "";
-        $message = "From {$_POST['name']} <{$_POST['email']}> (add to email list: " . (isset($_POST['add-mailing-list']) ? "yes" : "no") . ")\n--------------------------\n\n"  . 
-            "Phone: {$_POST['phone']}\n\n" .
-            "Date: {$_POST['date']}\n\n" .
-            "Workshop Type: {$_POST['workshop_type']}\n\n" .
-            "Comments: {$_POST['comments']}";
-
-        print "<p>Message: {$message}</p>";
+        $subject = "POKADOT customer contact: {$name}";
+        $message = "From {$name} <{$email}> (add to email list: ".(isset($_POST['add-mailing-list']) ? "yes" : "no").")\n--------------------------\n\n" . 
+            "Phone: {$phone}\n\n" .
+            "Date: {$date}\n\n" .
+            "Workshop Type: {$workshopType}\n\n" .
+            "Comments: {$comments}";
         mail($to, $subject, $message);
-        echo '<p class="line-after">
-                    Thank you, ' . htmlspecialchars($_POST["name"]) . ', for signing up for a workshop!
-                </p>
-                <p class=" soft-text block-quote">
-                    ' . str_replace("\n", "<br>", htmlspecialchars($_POST["workshop_type"])) . '
-                </p>
-        ';
-        $_POST = array();
-        $_SERVER["REQUEST_METHOD"] = "GET";
-    } else {
-        $values = $submitted ? $_POST : $initial_values;
 
-        $soft_text = array_fill_keys(array_keys($initial_values), " soft-text");
-        if ($submitted)
-            foreach ($soft_text as $field => $value)
-                if ($_POST[$field] != $initial_values[$field])
-                    $soft_text[$field] = "";
+        // Notify user with confirmation email
+        $confirmationSubject = "POKADOT Workshop Confirmation";
+        $confirmationMessage = "Hi {$name}, \n\nThank you for signing up for a workshop with Pokadot! Here are the details of your appointment:" . 
+            "\n\nPhone: {$phone}\n" .
+            "Date: {$date}\n" .
+            "Workshop Type: {$workshopType}\n" .
+            "Comments: {$comments}\n\n" .
+            "We will contact you shortly!\n\n" .
+            "- The Pokadot Team";
+        mail($email, $confirmationSubject, $confirmationMessage);
 
-        echo '<form id="signup-form" class="form" method="post" action="../pages/workshops.php#signup-form">
-                    <input id="name" class="short-text' . $valid["name"] . $soft_text["name"] . '" type="text" name="name" placeholder="' . $initial_values["name"] . '" maxlength="100" required title="Please enter your name.">
-                    <input id="email" class="short-text' . $valid["email"] . $soft_text["email"] . '" type="text" name="email" placeholder="' . $initial_values["email"] . '" required title="Please enter a email.">
-                    <input id="phone" class="short-text' . $valid["phone"] . $soft_text["phone"] . '" type="tel" name="phone" placeholder="' . $initial_values["phone"] . '" title="Please enter a phone number.">
-                    <input id="date" class="short-text' . $valid["date"] . $soft_text["date"] . '" type="datetime-local" name="date" placeholder="' . $initial_values["date"] . '" required title="Please enter a date.">';
-                echo '<select name="workshop-type" class="short-text' . $valid["workshop_type"] . $soft_text["workshop_type"] . '" required title="Please select a workshop!">
-                        <option selected="selected" value>Workshop</option>';
+        // Update Available Workshop Times and Pokadot Google Calendars
+        $summary = nl2br("<b>Name:</b> {$name} \n <b>Email:</b> {$email} \n <b>Phone Number:</b> {$phone} \n <b>Date:</b> {$date} \n <b>Workshop Type:</b> {$workshopType} \n <b>Comments:</b> {$comments}");
 
-                        for ($i = 0; $i < count($workshops); $i++) {
-                            echo "<option value='{$i}'>{$workshops[$i]}</option>";
-                        } 
+        // Delete event from Available Workshop Times calendar
+        $event = $calendarEvents[$_POST["date"]];
+        $eventID = $event["id"];
+        $eventStart = $event->start;
+        $eventEnd = $event->end;
+        $deletedEvent = $cal->events->delete($calendarId, $eventID); 
 
-                echo  '</select>
-                    <textarea id="comments" class="wide-text' . $valid["comments"] . $soft_text["comments"] . '" form="signup-form" name="comments" rows=8 placeholder="' . $initial_values["comments"] . '"></textarea>';
+        // Add event to Pokadot Main Calendar
+        $newEvent = new Google_Service_Calendar_Event(array(
+          'summary' => "Workshop with {$name}",
+          'description' => "Name: {$name} \nEmail: {$email} \nPhone Number: {$phone} \nDate: {$date} \nWorkshop Type: {$workshopType} \nComments: {$comments}",
+          'start' => $eventStart,
+          'end' => $eventEnd
+        ));
+        $createdEvent = $cal->events->insert($privateCalendarId, $newEvent);
 
-        foreach ($initial_values as $field => $value) {
-            echo "\n<label for=\"$field\" class=\"no-show\">$value</label>";
-        }
+        // Show workshop sign up confirmation message
+        echo '<h1 class="indexHeader">Thank you for signing up for a workshop!</h1>';
+        echo '<p class="subheader-center">Your Appointment:</p>';
+        echo '<p class="soft-text block-quote">'.$summary.'</p>';
+        echo '<p class="header-center">We will get back to you shortly!</p>';
+    } else { // No form submission: display sign up form
+        echo '<h1 class="indexHeader">Sign Up For a Workshop!</h1>';
+        echo '<p id="signup-error-message" class="subtitle"></p>';
+        echo '<form id="signup-form" class="form" name="signupForm" method="post" action="../pages/signup.php" onsubmit="return validWorkshopSignupForm();" method="POST">
+                    <input id="name-field" type="text" name="name" placeholder="'.$appointment_info["name"].'" maxlength="100" required title="Please enter your name.">
+                    <div class="multifield-line">
+                        <input id="email-field" type="text" name="email" placeholder="'.$appointment_info["email"].'" required title="Please enter a email.">
+                        <input id="phone-field" type="tel" name="phone" placeholder="'.$appointment_info["phone"].' (XXX-XXX-XXXX)" title="Please enter a phone number.">
+                    </div>
+                    <div class="multifield-line">
+                        <select id="workshop-type-field" name="workshop-type" onchange="changeColor(this);" required title="Please select a workshop!">
+                            <option selected="selected" value>Workshop</option>';
 
-        echo    '<input id="add-mailing-list" name="add-mailing-list" type="checkbox">
-                        <label for="add-mailing-list">Add me to the email list</label>
-                    <input type="submit" value="Sign Up">
-                </form>
-                ';
+                            for ($i = 0; $i < count($workshops); $i++) {
+                                echo "<option value='{$i}'>{$workshops[$i]}</option>";
+                            } 
+
+                    echo '</select>';
+                    echo '<select id="date-field" type="datetime-local" name="date" onchange="changeColor(this);" required title="Please select a workshop date and time.">
+                            <option selected="selected" value>Date and Time</option>';
+
+                            for ($i = 0; $i < count($workshopTimes); $i++) {
+                                echo "<option value='{$i}'>{$workshopTimes[$i]}</option>";
+                            } 
+
+                    echo '</select>
+                    </div>';
+
+                echo '<textarea id="comments" form="signup-form" name="comments" rows=8 placeholder="'.$appointment_info["comments"].' (i.e. Preferred Location, Special Accommodations)"></textarea>
+                    <input id="add-mailing-list" name="add-mailing-list" type="checkbox">
+                    <label for="add-mailing-list">Add me to the email list</label>
+                    <input class="signup-button" type="submit" name="signup" value="Sign Up">
+              </form>';
     }
 
 ?>

@@ -10,11 +10,19 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="../css/main.css">
 
+        <!-- Source: http://paperjs.org/tutorials/ ! -->
+
+    <script type="text/javascript" src="../js/paper-full.min.js"></script>
+    <script type="text/paperscript" src="../js/paperScript.js"></script>
+
 </head>
 <body>
+
+    <?php include "../components/handle_image_add_delete.php"; ?>
+
     <div class="container">
 
-        <?php $current=1; include "../components/banner_and_nav.php"; ?>
+        <?php $current=2; include "../components/banner_and_nav.php"; ?>
 
          <!-- SECTION END -->
          <div class="row">
