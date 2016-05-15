@@ -17,8 +17,8 @@
 
     <!-- Source: http://paperjs.org/tutorials/ ! -->
 
-    <script type="text/javascript" src="../js/paper-full.min.js"></script>
-    <script type="text/paperscript" src="../js/paperScript.js"></script>
+    <script type="text/javascript" src="js/paper-full.min.js"></script>
+    <script type="text/paperscript" src="js/paperScript.js"></script>
 </head>
 
 <body>
