@@ -4,7 +4,7 @@
         "name" => "Name",
         "email" => "Email Address",
         "subject" => "Subject",
-        "msg" => "Message"
+        "msg" => "Message  (i.e. Ask about custom appointments)"
     );
 
     $submitted = $_SERVER["REQUEST_METHOD"] == "POST";
