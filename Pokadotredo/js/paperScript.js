@@ -1,16 +1,16 @@
 // Source: http://paperjs.org/tutorials/ !
-var count = 20;
-	var colors = ["#FC0D1B", "#F6D16C", "#9CC283", "#4471BC"];
+var count = 100;
+	var colors = ["#F6D16C", "#9CC283", "#4471BC"]; //red FC0D1B
 	var direction = [1, -1];
 	var rand = Math.floor(Math.random() * colors.length);
 	var path = new Path.Circle({
 		center: [0, 0],
-		radius: 5,
+		radius: 15,
 		fillColor: colors[rand],
 		strokeColor: colors[rand]
 	});
+	path.opacity = 0.3;
 	path.sendToBack();
-
 	var symbol = new Symbol(path);
 
 	for (var i = 0; i < count; i++) {
@@ -29,8 +29,8 @@ var count = 20;
 				
 				// Move the item to the right. This way
 				// larger circles move faster than smaller circles:
-				item.position.x += item.bounds.width / 240;
-				item.position.y += item.bounds.height / 160;
+				item.position.x += item.bounds.width / 480;
+				item.position.y += item.bounds.height / 320;
 
 				// If the item move off screen, move it back
 				if (item.bounds.left > view.size.width) {
@@ -42,8 +42,8 @@ var count = 20;
 			}
 
 			else {
-				item.position.x -= item.bounds.width / 120;
-				item.position.y -= item.bounds.height / 280;
+				item.position.x -= item.bounds.width / 240;
+				item.position.y -= item.bounds.height / 560;
 
 				// If the item move off screen, move it back
 				if (item.bounds.left < 0) {

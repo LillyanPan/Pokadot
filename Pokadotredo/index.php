@@ -6,14 +6,17 @@
     <title>Pok-A-Dot</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
    <link href='https://fonts.googleapis.com/css?family=Quicksand:400,700' rel='stylesheet' type='text/css'>
+   <link href='https://fonts.googleapis.com/css?family=PT+Sans:400,700' rel='stylesheet' type='text/css'>
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="css/main.css">
+    <link rel="stylesheet" type="text/css" href="css/hamburger.css">
 
 
     <!--Slider-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
     <script src="js/responsiveSlides.js"></script>
+    <script src = "js/mobileNav.js"></script>
 
     <!-- Source: http://paperjs.org/tutorials/ ! -->
 
@@ -22,6 +25,7 @@
 </head>
 
 <body>
+<canvas id="null"></canvas>
     <div class="container">
         <?php $current=0; include "components/banner_and_nav.php"; ?>
 

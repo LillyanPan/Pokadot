@@ -16,6 +16,7 @@ $(document).ready(function() {
 			data: formData
 		})
 		.done(function(response) {
+			console.log("success");
 			$(formMessage).removeClass("error");
 			$(formMessage).addClass("success");
 
@@ -34,6 +35,7 @@ $(document).ready(function() {
 
 			//Set error message
 			if (data.responseText !== "") {
+				console.log("BAD");
 				$(formMessage).text(data.responseText);
 			}
 			else {

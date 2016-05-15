@@ -18,11 +18,43 @@
 
     <div class="container">
 
+    <nav class="menu">
+        <ul class="active">
+            <li class="current"><a href="#">Home</a></li>
+            <li><a href="#">Events</a></li>
+            <li><a href="#">Sign Ups</a></li>
+        </ul>
         <button class="hamburger hamburger--squeeze" type="button">
           <span class="hamburger-box">
             <span class="hamburger-inner"></span>
           </span>
         </button>
+    </nav>
+
+    <nav class="menubar">
+        <ul class="active">
+            <li class="current"><a ' . $classes[0] . 'href="' . $path_to_root . 'index.php">Home</a></li>
+            <li><a ' . $classes[1] . 'href="' . $path_to_root . 'pages/about.php">Who We Are</a></li>
+            <div id="whatwedo">
+            <a ' . $classes[2] . 'href="#">What We Do</a>
+                <div id="whatwedo-menu">
+                    <a href="' . $path_to_root . 'pages/events.php">Parties and Events</a>
+                    <br>
+                    <a href="' . $path_to_root . 'pages/gifts.php">Personalized Gifts</a>
+                    <br>
+                    <a href="' . $path_to_root . 'pages/pottery.php">Pottery Painting</a>
+                    <br>
+                    <a href="' . $path_to_root . 'pages/workshops.php">Workshops and Classes</a>
+                </div>
+            </div>
+            <a ' . $classes[3] . 'href="' . $path_to_root . 'pages/signup.php">Sign Up</a>
+            <a ' . $classes[4] . 'href="' . $path_to_root . 'pages/contactus.php">Contact Us</a>
+            ' . (empty($_SESSION['user']) ? "" : 
+                    "<a href='{$path_to_root}pages/login.php'>Logout</a>"
+            ) . '
+        </ul>
+    </nav>
+
 
          <!-- SECTION END -->
          <div class="row">

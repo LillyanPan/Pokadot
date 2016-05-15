@@ -6,11 +6,12 @@ $(document).ready(function(){
 	// }, function(){
 	// 	$("#whatwedo-menu").slideUp();
 	// });
-	$("#whatwedo").hover(function(e){
+	$("#whatwedo").click(function(e){
 		$("#whatwedo-menu").slideToggle();
 		e.stopPropagation();
+		e.preventDefault();
 	});
-	$(document).hover(function() {
+	$(document).click(function() {
 		$('#whatwedo-menu').slideUp();
 	});
 });
