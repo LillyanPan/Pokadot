@@ -26,7 +26,7 @@ echo '<!-- banner -->
                         <br>
                         <a href="' . $path_to_root . 'pages/pottery.php">Pottery Painting</a>
                         <br>
-                        <a href="' . $path_to_root . 'pages/workshops.php">Mixed Media 2D & 3D Art</a>
+                        <a href="' . $path_to_root . 'pages/mixed_media.php">Mixed Media 2D & 3D Art</a>
                     </div>
                 </div>
                 <a ' . $classes[3] . 'href="' . $path_to_root . 'pages/contactus.php">Contact Us</a>

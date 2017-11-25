@@ -40,12 +40,14 @@
            <div class="col-md-3 col-sm-3"></div>
            <div class="col-md-6 col-sm-6">
                 <h1 class="indexHeader">Pottery Painting - All Ages</h1>
-                <ul>
-                    <li>Open studio time or structured classes</li>
-                    <li>Variety of utilitarian and decorative bisqueware</li>
-                    <li>Colorful palette of glazes</li>
-                    <li>Inspired ideas and know how</li>
-                </ul>
+                <div class="whatWeDoListContainer">
+                    <ul class="whatWeDoList">
+                        <li>Open studio time or structured classes</li>
+                        <li>Variety of utilitarian and decorative bisqueware</li>
+                        <li>Colorful palette of glazes</li>
+                        <li>Inspired ideas and know how</li>
+                    </ul>
+                </div>
             </div>
             <div class="col-md-3 col-sm-3"></div>
         </div>
@@ -68,7 +70,7 @@
             <div class="col-md-10 col-xs-10 endSection final"></div>
             <div class="col-md-1 col-xs-1"></div>
         </div>
-        <!-- SECTION END -->    
+        <!-- SECTION END -->
 
         <?php include "../components/footer.php" ?>
 

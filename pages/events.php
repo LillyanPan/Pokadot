@@ -40,12 +40,14 @@
            <div class="col-md-3 col-sm-3"></div>
            <div class="col-md-6 col-sm-6">
                 <h1 class="indexHeader">Parties and Events</h1>
-                <ul>
-                    <li>Birthday Parties for kids and adults</li>
-                    <li>Bridal Showers and Bachelorette Parties</li>
-                    <li>Parents’ Night Out</li>
-                    <li>Playgroup Outings</li>
-                </ul>
+                <div class="whatWeDoListContainer">
+                    <ul class="whatWeDoList">
+                        <li>Birthday Parties for kids and adults</li>
+                        <li>Bridal Showers and Bachelorette Parties</li>
+                        <li>Parents’ Night Out</li>
+                        <li>Playgroup Outings</li>
+                    </ul>
+                </div>
             </div>
             <div class="col-md-3 col-sm-3"></div>
         </div>
