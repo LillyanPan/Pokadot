@@ -2,12 +2,12 @@
 
 $path_to_root = $current ? "../" : "";
 
-$classes = array_fill(0, 5, "");
+$classes = array_fill(0, 4, "");
 $classes[$current] = 'class="selected" ';
 
 echo '<!-- banner -->
         <div id="banner">
-            
+
             <a href="' . $path_to_root . 'index.php">
                 <img id="logo" src="' . $path_to_root . 'images/logo.png" alt="Pok-A-Dot logo">
             </a>
@@ -29,9 +29,8 @@ echo '<!-- banner -->
                         <a href="' . $path_to_root . 'pages/workshops.php">Mixed Media 2D & 3D Art</a>
                     </div>
                 </div>
-                <a ' . $classes[3] . 'href="' . $path_to_root . 'pages/signup.php">Sign Up</a>
-                <a ' . $classes[4] . 'href="' . $path_to_root . 'pages/contactus.php">Contact Us</a>
-                ' . (empty($_SESSION['user']) ? "" : 
+                <a ' . $classes[3] . 'href="' . $path_to_root . 'pages/contactus.php">Contact Us</a>
+                ' . (empty($_SESSION['user']) ? "" :
                         "<a href='{$path_to_root}pages/login.php'>Logout</a>"
                 ) . '
             </ul>
