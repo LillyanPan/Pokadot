@@ -1,77 +1,123 @@
+<?php session_start() ?>
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8">
-    <title>Pok-A-Dot Workshops</title>
-    <link rel="stylesheet" type="text/css" href="../css/main.css">
+    <title>POKADOT Mixed Media Art</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <link href='https://fonts.googleapis.com/css?family=Quicksand:400,700' rel='stylesheet' type='text/css'>
+        <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="../css/main.css">
+    <link rel="stylesheet" type="text/css" href="../css/hamburger.css">
+    <script src = "../js/mobileNav.js"></script>
+
+        <!-- Source: http://paperjs.org/tutorials/ ! -->
+
+    <script type="text/javascript" src="js/paper-full.min.js"></script>
+    <script type="text/paperscript" src="js/paperScript.js"></script>
+
 </head>
 <body>
-    <div id="container">
 
-        <?php $current=1; include "../components/banner_and_nav.php"; ?>
+    <?php include "../components/handle_image_add_delete.php"; ?>
+
+    <div class="container">
+
+        <?php $current=2; include "../components/banner_and_nav.php"; ?>
 
         <?php include "../components/picture_popout.php" ?>
 
-        <div id="contentpane">
-            <div class="section">
-                <h2>Workshops and Classes</h2>
-                <!-- <p>We have the ideas and know how to help you make room for creativity in your life.</p> -->
-                <ul class="indent">
+         <!-- SECTION END -->
+         <div class="row">
+            <div class="col-md-1 col-xs-1"></div>
+            <div class="col-md-10 col-xs-10 endSection final"></div>
+            <div class="col-md-1 col-xs-1"></div>
+        </div>
+        <!-- SECTION END -->
+
+        <div class="row">
+           <div class="col-md-3 col-sm-3"></div>
+           <div class="col-md-6 col-sm-6 workDescrip">
+                <h1 class="indexHeader">Mixed Media 2D &amp; 3D Art - All Ages</h1>
+                <ul>
                     <li>Open studio time or structured classes</li>
                     <li>Range of art materials</li>
-                    <li>Variety of utilitarian and decorative bisqueware</li>
-                    <li>Colorful palette of glazes</li>
                     <li>Inspired ideas and know how</li>
                 </ul>
-                <!-- <p>With as much or as little assistance as you would like, the possibilities are endless.</p> -->
             </div>
-            <div class="section">
-                <div class="section">
-                    <h4>Pottery Painting - all ages</h4>
-                    <?php
-                        $studio_pictures = array( "../images/pottery1_small.jpg",
-                                                  "../images/pottery2_small.jpg",
-                                                  "../images/pottery3_small.jpg");
-                        include "../components/studiopictures.php";
-                    ?>
-                </div>
-                <div class="section">
-                    <h4><span class="dot red"></span> Art - 1 year olds and up</h4>
-                    <?php
-                        $studio_pictures = array( "../images/artdabblers1_small.jpg",
-                                                  "../images/artdabblers2_small.jpg",
-                                                  "../images/artdabblers3_small.jpg");
-                        include "../components/studiopictures.php";
-                    ?>
-                </div>
-                <div class="section">
-                    <h4><span class="dot yellow"></span> Art - 3 year olds and up</h4>
-                    <?php
-                        $studio_pictures = array( "../images/artexplorers1_small.jpg",
-                                                  "../images/artexplorers2_small.jpg",
-                                                  "../images/artexplorers3_small.jpg");
-                        include "../components/studiopictures.php";
-                    ?>
-                </div>
-                <div class="section">
-                    <h4><span class="dot blue"></span> Art - 5 to 105 years old</h4>
-                    <?php
-                        $studio_pictures = array( "../images/artkidtechs1_small.jpg",
-                                                  "../images/artkidtechs2_small.jpg",
-                                                  "../images/artkidtechs3_small.jpg");
-                        include "../components/studiopictures.php";
-                    ?>
-                </div>
-            </div><!-- workshops and classes section -->
+            <div class="col-md-3 col-sm-3"></div>
+        </div>
 
-        </div><!-- content pane -->
+        <div class="row">
+            <div class="col-md-2 col-sm-1"></div>
+            <div class="col-md-8 col-sm-10">
+                <!-- <h1 class="indexHeader">Mixed Media - All Ages</h1> -->
+                <?php
+                    $group_name = "blue-dot";
+                    include "../components/studiopictures.php";
+                    $group_name = "yellow-dot";
+                    include "../components/studiopictures.php";
+                    $group_name = "red-dot";
+                    include "../components/studiopictures.php";
+                ?>
+            </div>
+            <div class="col-md-2 col-sm-1"></div>
+        </div>
+
+
+
+        <!--
+        <div class="row">
+            <div class="col-md-2 col-sm-1"></div>
+            <div class="col-md-8 col-sm-10">
+                <h1 class="indexHeader"><span class="dot blue"></span> Art - 5 to 105 years old</h1>
+                <?php
+                    $group_name = "blue-dot";
+                    include "../components/studiopictures.php";
+                ?>
+            </div>
+            <div class="col-md-2 col-sm-1"></div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-2 col-sm-1"></div>
+            <div class="col-md-8 col-sm-10">
+                <h1 class="indexHeader"><span class="dot yellow"></span> Art - 3 year olds and up</h1>
+                <?php
+                    $group_name = "yellow-dot";
+                    include "../components/studiopictures.php";
+                ?>
+            </div>
+            <div class="col-md-2 col-sm-1"></div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-2 col-sm-1"></div>
+            <div class="col-md-8 col-sm-10">
+                <h1 class="indexHeader"><span class="dot red"></span> Art - 1 year olds and up</h1>
+                <?php
+                    $group_name = "red-dot";
+                    include "../components/studiopictures.php";
+                ?>
+            </div>
+            <div class="col-md-2 col-sm-1"></div>
+        </div>
+        -->
+
+         <!-- SECTION END -->
+         <div class="row">
+            <div class="col-md-1 col-xs-1"></div>
+            <div class="col-md-10 col-xs-10 endSection final"></div>
+            <div class="col-md-1 col-xs-1"></div>
+        </div>
+        <!-- SECTION END -->
+
+        <?php include "../components/footer.php" ?>
 
     </div><!-- container -->
 
     <?php include "../components/globalscripts.php" ?>
-
     <script type="text/javascript" src="../js/picture_popout.js"></script>
-
 </body>
 </html>

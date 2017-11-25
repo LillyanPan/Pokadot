@@ -1,17 +1,39 @@
-<?php
-    echo '<div class="indent">';
-    foreach(array_chunk($studio_pictures, 3) as $triplet) {
-        echo '
-                        <div class="picture-triple-container">
-                            <img class="picture-triple" src="' . $triplet[0] . '" alt="' . pathinfo($triplet[0])["filename"] . '">
-                        </div>
-                        <div class="picture-triple-container">
-                            <img class="picture-triple" src="' . $triplet[1] . '" alt="' . pathinfo($triplet[1])["filename"] . '">
-                        </div>
-                        <div class="picture-triple-container rightmost">
-                            <img class="picture-triple" src="' . $triplet[2] . '" alt="' . pathinfo($triplet[2])["filename"] . '">
-                        </div>
-';
-    }
-    echo "                </div>\n";
-?>
+<div class="row">
+    <div class="col-xs-12 studio-picture-container">
+    <?php
+        $group_name = $group_name; // this parameter should be set before including this file
+        if (!empty($_SESSION['user']))
+            include "../components/manage_image_group.php";
+        $stmt = $pdo->prepare(
+           "SELECT images.image_id, filepath, description
+            FROM images 
+                LEFT JOIN images_in_groups
+                    ON images.image_id=images_in_groups.image_id
+                LEFT JOIN groups
+                    ON images_in_groups.group_id=groups.group_id
+            WHERE groups.group_name=:groupname");
+        $stmt->bindParam(":groupname", $group_name);
+        $stmt->execute();
+        $pictures = $stmt->fetchAll();
+        foreach($pictures as $pic) {
+            $src = '../images/' . $pic['filepath'];
+            $alt = $pic["description"];
+            echo "
+                <div class='col-md-4 col-xs-12'>\n";
+            if (!empty($_SESSION['user'])) {
+                echo "
+                    <form method='POST'>
+                        <input type='hidden' name='image_id' value=$pic[image_id]>
+                        <input type='submit' name='delete_image' value='delete' class='delete-image-button'>
+                    </form>";
+            }
+            echo "
+                    <div class='studio-picture'>
+                        <img class='studio-picture' src='$src' alt='$alt'>
+                    </div>\n";
+            echo "
+                </div>\n";
+        }
+    ?>
+    </div>
+</div>

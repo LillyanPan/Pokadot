@@ -1,11 +1,14 @@
-$(document).ready(function() {
+window.onload = function() {
 
-    $(".picture-triple-container").click(function() {
-        var img = $(this).children("img");
-        console.log(img.attr("src"));
+    $(".studio-picture").click(function() {
+        if ($(this).is("img"))
+            var img = $(this);
+        else
+            var img = $(this).children("img");
         $("#picture-popout-img").attr("src", img.attr("src").replace("_small", ""));
         $("#picture-popout-img").attr("alt", img.attr("alt"));
         $("#picture-popout-container").show();
+        $("#picture-popout-container").css("z-index", 10);
     });
 
     $("#picture-popout-close").click(function() {
@@ -20,4 +23,4 @@ $(document).ready(function() {
         $(this).hide();
     });
 
-});
+};
