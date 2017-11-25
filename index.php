@@ -20,7 +20,7 @@
 
     <!-- Source: http://paperjs.org/tutorials/ ! -->
 
-    <script type="text/javascript" src="js/paper-full.min.js"></script>
+    <!-- <script type="text/javascript" src="js/paper-full.min.js"></script> -->
     <script type="text/paperscript" src="js/paperScript.js"></script>
 </head>
 
@@ -36,7 +36,7 @@
             <li><img src="images/slider3.jpg" alt="slider3"></li>
             <li><img src="images/slider4.jpg" alt="slider4"></li>
         </ul>
-        
+
         <div class="row">
             <div class="col-md-1 col-xs-1"></div>
             <div class="col-md-10 col-xs-10">
@@ -52,7 +52,7 @@
                 <div class="cod-md-12">
                     <a class="signup-button" href="pages/signup.php" class="button">Sign up for a workshop!</a>
                     <p class="footer">gopokadot@gmail.com</p>
-                </div> 
+                </div>
              </div>
             <div class="col-md-3 col-xs-3"></div>
         </div> -->
