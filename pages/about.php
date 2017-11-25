@@ -88,7 +88,7 @@
                     Pokadot is a mobile art and lifestyle studio in west suburban Boston. For artists both young and old, we work with you to make your art or pottery painting project come to life. We work in collaboration with other art studios, assisted living facilities, scout troops, and family associations. We are also eager to help individuals plan private events. From birthday parties to bridal showers... whatever the vision, we will help with the planning and execution of your special event.
                 </p>
                 <p class="ptSans">
-                    Pokadot will bring our mobile studio to any space. Regardless of the range of projects, we provide all the materials, tables and chairs if necessary, and drop cloths. All we need from you is access to water. We provide fun and a sense of accomplishment for all of our artists. We can design a project to be completed in one hour or over the course of many weeks. We are fully insured and endlessly enthusiastic.
+                    Pokadot will bring our mobile studio to any space. Regardless of the range of projects, we provide all the materials, including tables and chairs if necessary. All we need from you is access to water. We provide fun and a sense of accomplishment for all of our artists. We can design a project to be completed in one hour or over the course of many weeks. We are fully insured and endlessly enthusiastic.
                 </p>
                 <p class="ptSans">
                     The health benefits of engagement in creative activities are well documented. Let Pokadot help find the perfect project for your group today.
