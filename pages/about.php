@@ -67,7 +67,7 @@
                 <img src="../images/Leigh.jpg" class="about_image" alt="Leigh">
                 <h2>Leigh</h2>
                 <hr>
-                <p class="about_image_description ptSans"><!-- A graduate of the responsive teacher program at the University of Vermont, Leigh has spent many years preparing teaching environments and designing activities for fun, authentic, hands on learning with a focus on individualized instruction and positive interaction! Now she’s looking forward to bringing her creative energy to Pokadot mobile art studio and you! -->Leigh, a UVM alumna with a degree in responsive teaching, prepares teaching environments and designs activities for fun, authentic, hands on learning with a focus on individualized instruction and positive interaction! Now she’s looking forward to bringing her creative energy to Pokadot mobile art studio and you!
+                <p class="about_image_description ptSans">Leigh, a UVM alumna with a degree in education, designs activities for fun, authentic, hands on learning with a focus on individualized instruction and positive interaction! Now she’s looking forward to bringing her creative energy to Pokadot mobile art studio and you!
                 </p>
             </div>
             <div class="col-md-3 col-sm-0"></div>
