@@ -45,7 +45,7 @@
             </div>
             <div class="col-md-1 col-sm-1"></div>
         </div>
-<!-- 
+<!--
         <div class="row">
             <div class="col-md-12">
                 <h1 class="indexHeader">Pokadot Team</h1>
@@ -91,10 +91,10 @@
                     Pokadot will bring our mobile studio to any space. Regardless of the range of projects, we provide all the materials, tables and chairs if necessary, and drop cloths. All we need from you is access to water. We provide fun and a sense of accomplishment for all of our artists. We can design a project to be completed in one hour or over the course of many weeks. We are fully insured and endlessly enthusiastic.
                 </p>
                 <p class="ptSans">
-                    The health benefits of engagement in creative activities are well documented. Let Pokadot help find appropriate projects for your group today.
+                    The health benefits of engagement in creative activities are well documented. Let Pokadot help find the perfect project for your group today.
                 </p>
             </div>
-            <div class="col-md-2 col-sm-1"></div> 
+            <div class="col-md-2 col-sm-1"></div>
         </div>
 
         <!-- SECTION END -->
@@ -103,7 +103,7 @@
             <div class="col-md-10 col-xs-10 endSection final"></div>
             <div class="col-md-1 col-xs-1"></div>
         </div>
-        <!-- SECTION END -->    
+        <!-- SECTION END -->
 
         <?php include "../components/footer.php" ?>
 
