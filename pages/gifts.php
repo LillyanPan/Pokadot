@@ -20,7 +20,7 @@
 </head>
 <body>
 1
-    <?php 
+    <?php
         ini_set('display_errors', 1);
         ini_set('display_startup_errors', 1);
         error_reporting(E_ALL);
@@ -46,12 +46,14 @@
            <div class="col-md-3 col-sm-3"></div>
            <div class="col-md-6 col-sm-6">
                 <h1 class="indexHeader">Personalized Gifts</h1>
-                <ul>
-                    <li>Weddings</li>
-                    <li>Anniversaries</li>
-                    <li>Birthdays</li>
-                    <li>Teacher's Gifts</li>
-                </ul>
+                <div class="whatWeDoListContainer">
+                    <ul class="whatWeDoList">
+                        <li>Weddings</li>
+                        <li>Anniversaries</li>
+                        <li>Birthdays</li>
+                        <li>Teacher's Gifts</li>
+                    </ul>
+                </div>
             </div>
             <div class="col-md-3 col-sm-3"></div>
         </div>
