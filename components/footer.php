@@ -7,6 +7,7 @@
                 <div class="cod-md-12">
                 	<a class="signup-button" href="mailto:gopokadot@gmail.com">Send us an email!</a>
                     <p class="footer">gopokadot@gmail.com</p>
+                	<a target="blank" href="https://www.facebook.com/gopokadot/">Visit us on Facebook!</a>
                     <p class="footer">Concord, MA</p>
                 </div>
              </div>
