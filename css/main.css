@@ -296,6 +296,10 @@ input#contactButton {
     font-family: "PT Sans";
 }
 
+.facebook-button {
+    border-color: #3b5998;
+}
+
 .signup-button:hover {
     background-color: rgba(254, 100, 46, 0.4);
     -webkit-transition: background .3s, color .3s;
